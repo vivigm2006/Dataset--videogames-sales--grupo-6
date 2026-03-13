@@ -1,2 +1,5 @@
-# Dateset, videogames sales, grupo 6
-Estudio estadístico sobre videogames sales
+# Análisis de la divergencia cultural en el consumo global de videojuegos 
+## Plantamiento del Problema
+En una era de globalización digital parece que todos vemos lo mismo y compramos lo mismo gracias al internet, sin embargo, la industria de videojuegos demuestra lo contrario. El renombre de un título no depende solo de su calidad técnica, sino que, nos hemos dado cuenta de que el éxito deriva mucho de la cultura de cada lugar, de su resonancia cultural.
+
+El problema es que a veces las empresas de videojuegos lanzan sus productos pensando que a todos nos gusta lo mismo y no siempre es así, resaltando la falta de comprensión sobre cómo los factores geográficos y sociodemográficos moldean las preferencias de juego. Por lo tanto, queremos investigar si el lugar donde vive una persona sigue siendo un factor decisivo para que un género de juego triunfe o fracase. ¿Realmente la globalización hizo que todos tengamos los mismos gustos o cada región sigue manteniendo su propia "chispa" cultural a la hora de jugar?
