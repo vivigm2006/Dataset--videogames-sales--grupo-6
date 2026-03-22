@@ -2,7 +2,7 @@
 # --- Metadatos Básicos ---
 title: "Título del Trabajo Final"
 author:
-   - Naomi Herrera 
+   - Nahomi Herrera 
    - Victoria Gilson
    - Allan Arcia
 date: "Febrero 2026"
