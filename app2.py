@@ -112,11 +112,24 @@ with tab1:
 with tab2:
     st.header("2. Similitud entre Mercados Globales")
     
-#grafico de caja que muestra la mediana (la línea del medio) y que tan dispersos están los datos
     st.subheader("Dispersión y Mediana de Ventas")
-    fig_box = px.box(df_filtrado, x="Genre", y=reg_tech, color="Genre",
-                    title=f"Distribución de éxito por título en {region_sel}",
-                    points="outliers", template="plotly_white")
+#calculo del valor que deja por debajo al 95% de los datos en la región actual, así eliminando los outliers que aplastan el gráfico
+    limite_95 = df_filtrado[reg_tech].quantile(0.95)
+#filtro de la data para el grafico de caja, asi usando ese límite
+    df_box = df_filtrado[df_filtrado[reg_tech] <= limite_95].copy()
+
+#el gráaico con la data optimizada
+    fig_box = px.box(df_box, 
+                    x="Genre", 
+                    y=reg_tech, 
+                    color="Genre",
+                    title=f"Distribución del 95% del Mercado en {region_sel}",
+                    points=False, #quita los puntos y hace que las cajas se vean mas grandes
+                    template="plotly_white")
+    
+#para que el eje Y no deje espacio en blanco innecesario
+    fig_box.update_layout(yaxis_range=[0, limite_95 * 1.05])
+    
     st.plotly_chart(fig_box, use_container_width=True)
     st.divider()
 
