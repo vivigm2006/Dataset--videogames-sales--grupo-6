@@ -2,9 +2,9 @@
 # --- Metadatos Básicos ---
 title: "Título del Trabajo Final"
 author:
-   - Primer participante
-   - Segundo participante
-   - Tercer participante
+   - Nahomi Herrera 
+   - Victoria Gilson
+   - Allan Arcia
 date: "Febrero 2026"
 
 # --- Metadatos Específicos de Plantilla ---
