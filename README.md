@@ -12,6 +12,6 @@ Analizar estadísticamente la relación entre la región geográfica y el éxito
 
 ## Objetivos especificos 
 
-* 📈 Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.
+* 📈 Cuantificar y comparar el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.
 * 🧪 Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.
 * 🚀 Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.
