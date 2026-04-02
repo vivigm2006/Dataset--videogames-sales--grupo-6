@@ -10,7 +10,7 @@ El problema radica en que muchas empresas del sector lanzan productos bajo un mo
 ## Objetivo general
 Analizar estadísticamente la relación entre la región geográfica y el éxito comercial de los videojuegos, con el fin de determinar si existen diferencias significativas en las preferencias culturales de consumo entre Japón, Norteamérica y Europa.
 
-## objetivos especificos 
+## Objetivos especificos 
 
 * 📈 Determinar patrones de consumo regional: Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.
 * 🧪 Evaluar la correlación entre ubicación y género: Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.
