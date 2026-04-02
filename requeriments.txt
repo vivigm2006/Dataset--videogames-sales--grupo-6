@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 pandas
 streamlit
 matplotlib
 seaborn
 plotly
-=======
-pandas
-streamlit
-matplotlib
-seaborn
->>>>>>> 82986a9 (Respaldo local antes de rebase)
