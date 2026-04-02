@@ -130,20 +130,27 @@ Describir la variable en estudio en el trabajo de investigación
 
 \section{Bases Teóricas}
 
-Resumen de las bases teoricas explicadas en el capitulo y su importancia\
+En este capítulo se establecen los fundamentos conceptuales y estadísticos que son esenciales para interpretar adecuadamente el comportamiento de los datos recolectados. La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica. Este enfoque no solo permite una comprensión más profunda de las tendencias y patrones de consumo, sino que también garantiza que las comparaciones entre las distintas regiones (Norteamérica, Europa y Japón) sean válidas desde un punto de vista científico y metodológico.\
 
-\subsection{Definición 1}
+\subsection{Estadística Descriptiva Univariante}
 
-Descripción de la definición 1\
+Es una rama fundamental de la estadística que se dedica a la recolección, organización y caracterización de un conjunto de datos con el objetivo de describir adecuadamente sus propiedades. En el contexto de este proyecto, se aplica para analizar la distribución de las ventas globales de videojuegos, facilitando la identificación de valores atípicos (outliers) y el cálculo de medidas de tendencia central, como la media, mediana y moda, que son esenciales para comprender el comportamiento del mercado. Además, este análisis permite a las empresas no solo interpretar datos históricos, sino también prever tendencias futuras, optimizar estrategias de marketing y ajustar sus producciones según las preferencias del consumidor. La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo.\
 
-\subsection{Definición 2}
+\subsection{Segmentación de Mercado Geográfica}
 
-Descripción de la definición 2\
+Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades. Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado. Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance. Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
 
-\subsection{Definición n}
+\subsection{Medidas de Dispersión (Varianza y Desviación Estándar)}
 
-Descripción de la definición n\
+Son parámetros estadísticos que reflejan el grado de variabilidad de los datos en relación con la media aritmética. En el análisis de este conjunto de datos, su aplicación es fundamental para evaluar la volatilidad del éxito de los videojuegos. Por ejemplo, una desviación estándar alta en las ventas de un género específico puede señalar un mercado de alto riesgo, pero también con un potencial significativo de grandes retornos, lo que es crucial para la evaluación de proyectos financieros. Además, estas medidas permiten a las empresas identificar tendencias y comportamientos extremos en el mercado, lo que puede ser útil para la planificación estratégica y la gestión de riesgos. Al comprender la dispersión de las ventas, las organizaciones pueden tomar decisiones más informadas sobre inversiones y desarrollos futuros, optimizando así sus oportunidades de éxito en un entorno competitivo.\
 
+\subsection{Correlación de Pearson}
+
+Es una medida que evalúa la dependencia lineal entre dos variables aleatorias cuantitativas. En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dirección de la relación entre el año de lanzamiento de los videojuegos y su volumen de ventas. Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive. Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria. Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing. Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
+
+\subsection{Prueba de Independencia Chi-cuadrado de Pearson}
+
+Es una prueba estadística de hipótesis que se utiliza para determinar si existe una asociación significativa entre dos variables categóricas, ya sean nominales u ordinales. En el contexto de esta investigación, esta prueba es esencial para validar la tesis de la Divergencia Cultural, ya que permite evaluar si la preferencia por un género de videojuego (variable A) es independiente de la región geográfica de consumo (variable B). La relevancia de esta base teórica radica en el cálculo de las "frecuencias esperadas" (lo que se anticiparía en un mercado globalizado y uniforme) en comparación con las "frecuencias observadas" (lo que realmente se registra en los datos de ventas). Si la discrepancia entre ambas es considerable, se puede concluir con un rigor estadístico que los factores culturales de cada región influyen de manera significativa en el éxito comercial de los diferentes géneros, desafiando así la noción de un mercado global homogéneo. Esta comprensión permite a las empresas adaptar sus estrategias de marketing y desarrollo de productos a las particularidades culturales, maximizando su impacto en cada mercado específico.\
 
 \chapter{Marco Metódico}
 En esta sección se presentan las metodologías y/o test necesarios relacionados con la práctica divulgada en el marco teórico, así como las fuentes de datos.
