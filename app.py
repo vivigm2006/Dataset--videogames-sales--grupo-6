@@ -101,12 +101,18 @@ with tab1:
                      color="Genre", template="plotly_white")
         st.plotly_chart(fig1, use_container_width=True)
 
+#informacion/comentario de la grafica
+        st.info(f"**Interpretación**: Las barras más altas muestran los géneros favoritos en la región. Si una barra es mucho más grande que las demás, significa que en esta región la gente tiene un gusto muy marcado por ese tipo de juego.")
+
 #un grafico circular para ver el peso de cada género
     with col_pie:
         fig_pie = px.pie(df_filtrado, values=reg_tech, names='Genre',
                          title=f"Distribución porcentual en {region_sel}",
                          hole=0.4)
         st.plotly_chart(fig_pie, use_container_width=True)
+
+#informacion/comentario de la grafica
+        st.info(f"**Interpretación**: En el gráfico de pastel vemos que parte se lleva cada género. Es ideal para ver rápidamente y de otra forma cuáles dominan el mercado.")
 
 #tab2, con respecto al segundo objetivo
 with tab2:
@@ -131,6 +137,14 @@ with tab2:
     fig_box.update_layout(yaxis_range=[0, limite_95 * 1.05])
     
     st.plotly_chart(fig_box, use_container_width=True)
+
+#informacion/comentario de la grafica
+    st.info(f"""
+**Dato Importante**: 
+* **Si la caja es pequeña**: Significa que la mayoría de los juegos de ese género venden cantidades parecidas en la región. El éxito es más estable.
+* **Si la caja es grande**: Significa que hay mucha diferencia entre los juegos. Algunos venden poco y otros muchísimo, siendo un mercado más variado.
+""")
+
     st.divider()
 
 #titulo del segundo grafico en este mismo tab
@@ -168,6 +182,9 @@ with tab3:
                             hole=0.5, title="Top 10 Consolas Dominantes")
         st.plotly_chart(fig_pie_hw, use_container_width=True)
 
+#informacion/comentario de la grafica
+        st.info(f"**Consolas populares**: Estas son las 10 máquinas favoritas en la región. Nos dice que plataforma prefieren las personas para jugar.")
+
 #segunda columna
     with col_plat2:
         st.write("Ventas por Consola y Género")
@@ -182,6 +199,9 @@ with tab3:
                          title=f"Especialización de Hardware en {region_sel}", template="plotly_white")
         st.plotly_chart(fig_plat, use_container_width=True)
 
+#informacion/comentario de la grafica
+        st.info("**Especialización**: Se ve si ciertos géneros viven en una consola específica. Por ejemplo, si los juegos de acción solo resaltan en una marca de consola.")
+
 #tab4, muestra el exito segun la data
 with tab4:
     st.header("4. Evidencia de Éxito Comercial")
@@ -189,3 +209,49 @@ with tab4:
     df_top = df_filtrado.sort_values(by=reg_tech, ascending=False).head(top_n)
 #se muestra la tabla interactiva en la pantalla
     st.dataframe(df_top[['Name', 'Platform', 'Genre', reg_tech]], hide_index=True, use_container_width=True)
+
+#tab5, para analizar datos fuera de lo comun
+with tab5:
+    st.header("5. Éxitos Regionales vs Fracasos Globales")
+
+    if region_sel == "Ventas Globales":
+        st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales.")
+    else:
+        # 1. Filtro de relevancia (Tu código)
+        threshold = 0.3 
+        df_outliers = df_filtrado[df_filtrado[reg_tech] > threshold].copy()
+        
+        # 2. Cálculo del Índice (Tu código)
+        df_outliers['Indice_Regionalismo'] = (df_outliers[reg_tech] / df_outliers['Global_Sales']) * 100
+        top_3_outliers = df_outliers.sort_values(by='Indice_Regionalismo', ascending=False).head(3)
+
+        # 3. Visualización (Tu código)
+        col_out_graf, col_out_cards = st.columns([2, 1])
+        with col_out_graf:
+            fig_out = px.scatter(df_outliers, x=reg_tech, y="Global_Sales", size="Global_Sales", 
+                                 hover_name="Name", color="Indice_Regionalismo",
+                                 title=f"Divergencia en {region_sel}", color_continuous_scale="OrRd")
+            st.plotly_chart(fig_out, use_container_width=True)
+
+        with col_out_cards:
+            st.subheader("Top 3 boom Local")
+            for i, row in top_3_outliers.iterrows():
+                st.markdown(f"""
+                <div style="border: 1px solid #FF4B4B; padding: 10px; border-radius: 10px; margin-bottom: 10px; background-color: #FFF5F5;">
+                    <h4 style="margin:0; color: #FF4B4B;">{row['Name']}</h4>
+                    <p style="margin:0; font-size: 14px;"><b>Plataforma:</b> {row['Platform']}</p>
+                    <p style="margin:0; font-size: 18px;"><b>{row['Indice_Regionalismo']:.1f}%</b> de sus ventas son locales</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+        #espacio para verificar o demostrar lo que esta en el grafico
+        st.divider() 
+        with st.expander("🔍 Verificación técnica de los cálculos"):
+            
+            #la tabla con los datos crudos para comparar
+            df_audit = top_3_outliers[['Name', reg_tech, 'Global_Sales', 'Indice_Regionalismo']]
+            st.dataframe(df_audit.style.format({
+                reg_tech: "{:.2f}M",
+                "Global_Sales": "{:.2f}M",
+                "Indice_Regionalismo": "{:.2f}%"
+            }), use_container_width=True)
