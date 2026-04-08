@@ -145,6 +145,7 @@ with tab2:
 * **Si la caja es grande**: Significa que hay mucha diferencia entre los juegos. Algunos venden poco y otros muchísimo, siendo un mercado más variado.
 """)
 
+#espacio entre las graficas
     st.divider()
 
 #titulo del segundo grafico en este mismo tab
@@ -217,15 +218,15 @@ with tab5:
     if region_sel == "Ventas Globales":
         st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales.")
     else:
-        # 1. Filtro de relevancia (Tu código)
+#seleccionamos juegos con ventas representativas (>0.3M)
         threshold = 0.3 
         df_outliers = df_filtrado[df_filtrado[reg_tech] > threshold].copy()
         
-        # 2. Cálculo del Índice (Tu código)
+#calculo del peso relativo de la región sobre el total global
         df_outliers['Indice_Regionalismo'] = (df_outliers[reg_tech] / df_outliers['Global_Sales']) * 100
         top_3_outliers = df_outliers.sort_values(by='Indice_Regionalismo', ascending=False).head(3)
 
-        # 3. Visualización (Tu código)
+#visualizacion de la dispersión de la divergencia cultural y casos de exito local
         col_out_graf, col_out_cards = st.columns([2, 1])
         with col_out_graf:
             fig_out = px.scatter(df_outliers, x=reg_tech, y="Global_Sales", size="Global_Sales", 
@@ -234,7 +235,7 @@ with tab5:
             st.plotly_chart(fig_out, use_container_width=True)
 
         with col_out_cards:
-            st.subheader("Top 3 boom Local")
+            st.subheader("Top 3 Local")
             for i, row in top_3_outliers.iterrows():
                 st.markdown(f"""
                 <div style="border: 1px solid #FF4B4B; padding: 10px; border-radius: 10px; margin-bottom: 10px; background-color: #FFF5F5;">
