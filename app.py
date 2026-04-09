@@ -36,6 +36,19 @@ def load_data():
 
 df_base = load_data()
 
+#diccionario para poner tdo en español
+labels_es = {
+    "Genre": "Género",
+    "Platform": "Plataforma",
+    "NA_Sales": "Ventas Norteamérica",
+    "EU_Sales": "Ventas Europa",
+    "JP_Sales": "Ventas Japón",
+    "Other_Sales": "Otras Ventas",
+    "Global_Sales": "Ventas Globales",
+    "Indice_Regionalismo": "Índice de Regionalismo (%)",
+    "Name": "Nombre del Juego"
+}
+
 #sección que dinamiza la particpacion del usurio desde su entrada
 st.sidebar.header("🕹️ Variables de Investigación")
 
@@ -67,7 +80,7 @@ st.markdown("### Investigación sobre la validez de la universalidad de videojue
 st.divider()
 
 #orden por columnas para mostrar un resumen estadístico sobre los datos filtrados
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1:
     st.metric("Ventas Totales (Región)", f"{df_filtrado[reg_tech].sum():.2f}M")
 #calculo de la diferencia del rendimiento actual respecto al promedio global de la región elegida
@@ -75,9 +88,6 @@ with col2:
     avg_global = df_base[reg_tech].mean()
     avg_sel = df_filtrado[reg_tech].mean() if not df_filtrado.empty else 0
     st.metric("Rendimiento Promedio", f"{avg_sel:.2f}M", delta=f"{avg_sel - avg_global:.2f}M vs Global")
-#para que el usuario controle la cantidad que quiere ver de la tabla
-with col3:
-    top_n = st.number_input("Ver el Top de juegos:", 5, 50, 10)
 
 #organizacion de los tabs y sus nombres
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -91,28 +101,39 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 #tab1, con respecto al primer objetivo de la investigacion
 with tab1:
     st.header("1. Cuantificación de Preferencias por Género")
-#se divide en 2 columnas para aprovechar el espacio
-    col_bar, col_pie = st.columns(2)
 
-#un grafico de barras, eje horzontal generos y vertical las regiones, un colo distinto segun cada variable
+#columnas de separacion
+    col_bar, col_tree = st.columns(2)
+
+#grafico de barras en la primera columna
     with col_bar:
+        st.write("### Ventas por Género") # Un título pequeño para la columna
         fig1 = px.bar(df_filtrado, x="Genre", y=reg_tech, 
-                     title=f"Ventas por Género en {region_sel}",
-                     color="Genre", template="plotly_white")
+                     color="Genre", template="plotly_white",
+                     labels=labels_es)
+        
+#se ajustan los margenes para que no haya espcio desperdiciado
+        fig1.update_layout(margin=dict(l=0, r=0, t=30, b=0), height=400)
         st.plotly_chart(fig1, use_container_width=True)
 
-#informacion/comentario de la grafica
-        st.info(f"**Interpretación**: Las barras más altas muestran los géneros favoritos en la región. Si una barra es mucho más grande que las demás, significa que en esta región la gente tiene un gusto muy marcado por ese tipo de juego.")
+#grafico de ramas o arbol
+    with col_tree:
+        st.write("### Ecosistema de la Región") 
+        if not df_filtrado.empty:
+            fig_tree_gen = px.treemap(df_filtrado, 
+                                     path=['Genre'], 
+                                     values=reg_tech,
+                                     color='Genre',
+                                     template="plotly_white",
+                                     labels=labels_es)
+            
+            fig_tree_gen.update_layout(margin=dict(l=0, r=0, t=30, b=0), height=400)
+            fig_tree_gen.update_traces(textinfo="label+percent entry")
+            
+            st.plotly_chart(fig_tree_gen, use_container_width=True)
 
-#un grafico circular para ver el peso de cada género
-    with col_pie:
-        fig_pie = px.pie(df_filtrado, values=reg_tech, names='Genre',
-                         title=f"Distribución porcentual en {region_sel}",
-                         hole=0.4)
-        st.plotly_chart(fig_pie, use_container_width=True)
-
 #informacion/comentario de la grafica
-        st.info(f"**Interpretación**: En el gráfico de pastel vemos que parte se lleva cada género. Es ideal para ver rápidamente y de otra forma cuáles dominan el mercado.")
+    st.info(f"**Interpretación**: Las barras muestran volumen total, mientras que el mapa de cuadros permite visualizar la relevancia relativa de cada género.")
 
 #tab2, con respecto al segundo objetivo
 with tab2:
@@ -124,14 +145,14 @@ with tab2:
 #filtro de la data para el grafico de caja, asi usando ese límite
     df_box = df_filtrado[df_filtrado[reg_tech] <= limite_95].copy()
 
-#el gráaico con la data optimizada
+#el graico con la data optimizada
     fig_box = px.box(df_box, 
                     x="Genre", 
                     y=reg_tech, 
                     color="Genre",
                     title=f"Distribución del 95% del Mercado en {region_sel}",
                     points=False, #quita los puntos y hace que las cajas se vean mas grandes
-                    template="plotly_white")
+                    template="plotly_white", labels=labels_es)
     
 #para que el eje Y no deje espacio en blanco innecesario
     fig_box.update_layout(yaxis_range=[0, limite_95 * 1.05])
@@ -148,25 +169,29 @@ with tab2:
 #espacio entre las graficas
     st.divider()
 
-#titulo del segundo grafico en este mismo tab
-    st.subheader("Matriz de Identidad de Consumo")
+    st.header("2. Similitud entre Mercados Globales")
     
-#cambiamos el nombre tecnico por nombres bonitos
-    df_corr = df_filtrado[["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales"]].rename(columns={
-        "NA_Sales": "Norteamérica",
-        "EU_Sales": "Europa",
-        "JP_Sales": "Japón",
-        "Other_Sales": "Otros"
-    })
-#calculo de la correlación (un número entre 0 y 1)
-    corr_matrix = df_corr.corr()
+    st.divider()
 
-#dibujo del mapa de colores 
-    fig_corr = px.imshow(corr_matrix, 
-                         text_auto=True, 
-                         color_continuous_scale='RdYlGn',
-                         title="Correlación entre Mercados (Similitud de gustos)")
-    st.plotly_chart(fig_corr, use_container_width=True)
+    st.subheader(f"Jerarquía de Consumo")
+
+    if not df_filtrado.empty:
+#los datos ordenados por la región seleccionada
+        df_funnel = df_filtrado.groupby('Genre')[reg_tech].sum().reset_index()
+        df_funnel = df_funnel.sort_values(by=reg_tech, ascending=False)
+
+#el grafico tipo piramide
+        fig_funnel = px.funnel(df_funnel, 
+                               x=reg_tech, 
+                               y='Genre', 
+                               title=f"Prioridades de Consumo: {region_sel}",
+                               color='Genre', 
+                               template="plotly_white",
+                               labels=labels_es)
+
+        st.plotly_chart(fig_funnel, use_container_width=True)
+
+        st.info(f"**Interpretación**: Este gráfico muestra qué tan pesado es cada género según la región.")
 
 #tab3, con respecto al tercer objetivo de la investigacion
 with tab3:
@@ -180,7 +205,7 @@ with tab3:
         platform_summary = df_filtrado.groupby("Platform")[reg_tech].sum().reset_index()
 #gráfico de dona, se toman solo las 10 mejores para que el gráfico no se amontone
         fig_pie_hw = px.pie(platform_summary.nlargest(10, reg_tech), values=reg_tech, names="Platform", 
-                            hole=0.5, title="Top 10 Consolas Dominantes")
+                            hole=0.5, title="Top 10 Consolas Dominantes", labels=labels_es)
         st.plotly_chart(fig_pie_hw, use_container_width=True)
 
 #informacion/comentario de la grafica
@@ -197,7 +222,7 @@ with tab3:
 
 #gráfico de barras agrupadas
         fig_plat = px.bar(df_plat_top, x="Platform", y=reg_tech, color="Genre", barmode="group",
-                         title=f"Especialización de Hardware en {region_sel}", template="plotly_white")
+                         title=f"Especialización de Hardware en {region_sel}", template="plotly_white", labels=labels_es)
         st.plotly_chart(fig_plat, use_container_width=True)
 
 #informacion/comentario de la grafica
@@ -206,6 +231,8 @@ with tab3:
 #tab4, muestra el exito segun la data
 with tab4:
     st.header("4. Evidencia de Éxito Comercial")
+#para que el usuario controle la cantidad que quiere ver de la tabla
+    top_n = st.number_input("Ver el Top de juegos:", 5, 50, 10, key="top_tab4")
 #el dataframe filtrado en orden para poner los juegos más vendidos arriba
     df_top = df_filtrado.sort_values(by=reg_tech, ascending=False).head(top_n)
 #se muestra la tabla interactiva en la pantalla
@@ -231,7 +258,7 @@ with tab5:
         with col_out_graf:
             fig_out = px.scatter(df_outliers, x=reg_tech, y="Global_Sales", size="Global_Sales", 
                                  hover_name="Name", color="Indice_Regionalismo",
-                                 title=f"Divergencia en {region_sel}", color_continuous_scale="OrRd")
+                                 title=f"Divergencia en {region_sel}", color_continuous_scale="OrRd", labels=labels_es)
             st.plotly_chart(fig_out, use_container_width=True)
 
         with col_out_cards:
@@ -245,11 +272,11 @@ with tab5:
                 </div>
                 """, unsafe_allow_html=True)
 
-        #espacio para verificar o demostrar lo que esta en el grafico
+#espacio para verificar o demostrar lo que esta en el grafico
         st.divider() 
         with st.expander("🔍 Verificación técnica de los cálculos"):
             
-            #la tabla con los datos crudos para comparar
+#la tabla con los datos crudos para comparar
             df_audit = top_3_outliers[['Name', reg_tech, 'Global_Sales', 'Indice_Regionalismo']]
             st.dataframe(df_audit.style.format({
                 reg_tech: "{:.2f}M",
