@@ -224,7 +224,8 @@ with tab3:
         st.plotly_chart(fig_piramide, use_container_width=True)
         st.info("**Análisis de Magnitud**: La pirámide muestra el volumen de ventas acumulado. Es la métrica directa de éxito comercial en la región.")
 
-        st.divider() #línea para separar los dos análisis
+#espacio entre las graficas
+        st.divider()
 
 #grafico de barras aplidadas, enfacada en el porcentaje
         st.write("### Especialización (Porcentual)")
@@ -248,7 +249,7 @@ with tab3:
         fig_stack.update_xaxes(title="Porcentaje de las ventas")
     
         st.plotly_chart(fig_stack, use_container_width=True)
-        st.info("**Interpretación**: Aquí comparamos el 'ADN' de cada consola. Si una barra tiene un color predominante, significa que esa plataforma se especializa en ese género.")
+        st.info("**Interpretación**: Se compara la identidad comercial de cada consola. Si una barra tiene un color predominante, significa que esa plataforma se especializa en ese género.")
 
 #tab4, muestra el exito segun la data
 with tab4:
@@ -294,9 +295,8 @@ with tab5:
                 </div>
                 """, unsafe_allow_html=True)
 
-        st.info("**Interpretacion:** Punto Grande: Dominancia regional (un gigante local). Punto Pequeño: Identidad regional (un tesoro local).")
-#espacio para verificar o demostrar lo que esta en el grafico
-        st.divider() 
+        st.info("**Punto Grande**: Dominancia regional (un gigante local). **Punto Pequeño**: Identidad regional (un tesoro local).")
+#para demostrar lo que esta en el grafico
         with st.expander("🔍 Verificación técnica de los cálculos"):
             
 #la tabla con los datos crudos para comparar
