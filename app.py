@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 import plotly.express as px
 
 #titulo de la pestaña del navegador
@@ -76,7 +74,7 @@ df_filtrado = df_base[df_base["Genre"].isin(generos)]
 
 #titulo y subtitulo en la pagina
 st.title("📊 Análisis de Divergencia Cultural en Videojuegos")
-st.markdown("### Investigación sobre la validez de la universalidad de videojuegos en el mercado global")
+st.markdown("### Estudio estadístico sobre la variabilidad del consumo de videojuegos en los mercados regionales y en el mercado global")
 st.divider()
 
 #orden por columnas para mostrar un resumen estadístico sobre los datos filtrados
@@ -133,7 +131,7 @@ with tab1:
             st.plotly_chart(fig_tree_gen, use_container_width=True)
 
 #informacion/comentario de la grafica
-    st.info(f"**Interpretación**: Las barras muestran volumen total, mientras que el mapa de cuadros permite visualizar la relevancia relativa de cada género.")
+    st.info("**Interpretación**: Las barras muestran volumen total, mientras que el mapa de cuadros permite visualizar la relevancia relativa de cada género.")
 
 #tab2, con respecto al segundo objetivo
 with tab2:
@@ -160,73 +158,97 @@ with tab2:
     st.plotly_chart(fig_box, use_container_width=True)
 
 #informacion/comentario de la grafica
-    st.info(f"""
-**Dato Importante**: 
-* **Si la caja es pequeña**: Significa que la mayoría de los juegos de ese género venden cantidades parecidas en la región. El éxito es más estable.
-* **Si la caja es grande**: Significa que hay mucha diferencia entre los juegos. Algunos venden poco y otros muchísimo, siendo un mercado más variado.
+    st.info(""" 
+**Si la caja es pequeña**: Significa que la mayoría de los juegos de ese género venden cantidades parecidas en la región. El éxito es más estable.
+**Si la caja es grande**: Significa que hay mucha diferencia entre los juegos. Algunos venden poco y otros muchísimo, siendo un mercado más variado.
 """)
 
 #espacio entre las graficas
     st.divider()
 
-    st.header("2. Similitud entre Mercados Globales")
+    st.header("2. Composición Relativa del Mercado")
     
-    st.divider()
+#dataframe que vuelve las ventas a porcentajes
+    df_prop = df_filtrado.groupby('Genre')[reg_tech].sum().reset_index()
+    total_ventas = df_prop[reg_tech].sum()
+    df_prop['% del Mercado'] = (df_prop[reg_tech] / total_ventas * 100).round(2)
 
-    st.subheader(f"Jerarquía de Consumo")
+#gráfico de barras horizontal 
+    fig_prop = px.bar(df_prop, 
+                      y="Genre", 
+                      x="% del Mercado", 
+                      orientation='h',
+                      title=f"Cuota de Mercado por Género en {region_sel}",
+                      text="% del Mercado",
+                      color="Genre",
+                      template="plotly_white",
+                      labels=labels_es)
 
-    if not df_filtrado.empty:
-#los datos ordenados por la región seleccionada
-        df_funnel = df_filtrado.groupby('Genre')[reg_tech].sum().reset_index()
-        df_funnel = df_funnel.sort_values(by=reg_tech, ascending=False)
+#el símbolo de % y quitamos líneas
+    fig_prop.update_traces(texttemplate='%{text}%', textposition='outside')
+    fig_prop.update_layout(xaxis_ticksuffix="%", xaxis_range=[0, 100])
+#simplificacion estetica de los ejes
+    fig_prop.update_xaxes(showgrid=False)
+    fig_prop.update_yaxes(showgrid=False)
 
-#el grafico tipo piramide
-        fig_funnel = px.funnel(df_funnel, 
-                               x=reg_tech, 
-                               y='Genre', 
-                               title=f"Prioridades de Consumo: {region_sel}",
-                               color='Genre', 
-                               template="plotly_white",
-                               labels=labels_es)
+    st.plotly_chart(fig_prop, use_container_width=True)
 
-        st.plotly_chart(fig_funnel, use_container_width=True)
-
-        st.info(f"**Interpretación**: Este gráfico muestra qué tan pesado es cada género según la región.")
+#informacion/comentario de la grafica
+    st.info("**Análisis de Proporción**: Se muestra que domina cada género. Esto permite comparar regiones de distintos tamaños bajo la misma escala.")
 
 #tab3, con respecto al tercer objetivo de la investigacion
 with tab3:
-    st.header("3. Estudio de la Distribución de las Plataformas")
-    col_plat1, col_plat2 = st.columns(2)
+    st.header("3. Dinámicas de Consumo por Plataforma")
+    
+    if not df_filtrado.empty:
+#preparacion de los datos
+        df_plat_vol = df_filtrado.groupby("Platform")[reg_tech].sum().reset_index()
+        df_plat_vol = df_plat_vol.nlargest(10, reg_tech) #top 10 consolas por ventas
 
-#primera columna 
-    with col_plat1:
-        st.write("Cuota de mercado por Consola")
-#agrupamos los datos, se suman las ventas de la región elegida por cada plataforma
-        platform_summary = df_filtrado.groupby("Platform")[reg_tech].sum().reset_index()
-#gráfico de dona, se toman solo las 10 mejores para que el gráfico no se amontone
-        fig_pie_hw = px.pie(platform_summary.nlargest(10, reg_tech), values=reg_tech, names="Platform", 
-                            hole=0.5, title="Top 10 Consolas Dominantes", labels=labels_es)
-        st.plotly_chart(fig_pie_hw, use_container_width=True)
+#grafico de piramide, enfocada en el volumen 
+        st.write("### Jerarquía de Hardware")
+        fig_piramide = px.funnel(df_plat_vol, 
+                                 x=reg_tech, 
+                                 y="Platform",
+                                 color="Platform",
+                                 title=f"Ventas Totales por Consola en {region_sel}",
+                                 template="plotly_white",
+                                 labels=labels_es)
+        
+#para que muestre el valor en millones (M)
+        fig_piramide.update_traces(
+            texttemplate="%{value:.2f}M", 
+            textposition="inside"
+        )
+        fig_piramide.update_layout(showlegend=False)
+        st.plotly_chart(fig_piramide, use_container_width=True)
+        st.info("**Análisis de Magnitud**: La pirámide muestra el volumen de ventas acumulado. Es la métrica directa de éxito comercial en la región.")
 
-#informacion/comentario de la grafica
-        st.info(f"**Consolas populares**: Estas son las 10 máquinas favoritas en la región. Nos dice que plataforma prefieren las personas para jugar.")
+        st.divider() #línea para separar los dos análisis
 
-#segunda columna
-    with col_plat2:
-        st.write("Ventas por Consola y Género")
-#se agrupan por plataforma y género para ver la combinación de ambos
-        df_plat = df_filtrado.groupby(['Platform', 'Genre'])[reg_tech].sum().reset_index()
-#solo nos quedamos con las 10 plataformas que más venden en total
-        top_platforms = df_plat.groupby('Platform')[reg_tech].sum().nlargest(10).index
-        df_plat_top = df_plat[df_plat['Platform'].isin(top_platforms)]
+#grafico de barras aplidadas, enfacada en el porcentaje
+        st.write("### Especialización (Porcentual)")
+#preparacion de datos
+        df_stack = df_filtrado.groupby(['Platform', 'Genre'])[reg_tech].sum().reset_index()
+        top_10_plats = df_plat_vol['Platform'].tolist()
+        df_stack = df_stack[df_stack['Platform'].isin(top_10_plats)]
 
-#gráfico de barras agrupadas
-        fig_plat = px.bar(df_plat_top, x="Platform", y=reg_tech, color="Genre", barmode="group",
-                         title=f"Especialización de Hardware en {region_sel}", template="plotly_white", labels=labels_es)
-        st.plotly_chart(fig_plat, use_container_width=True)
-
-#informacion/comentario de la grafica
-        st.info("**Especialización**: Se ve si ciertos géneros viven en una consola específica. Por ejemplo, si los juegos de acción solo resaltan en una marca de consola.")
+        fig_stack = px.bar(df_stack, 
+                           x=reg_tech, 
+                           y="Platform", 
+                           color="Genre",
+                           title="Composición de Géneros por Consola",
+                           orientation='h',
+                           template="plotly_white",
+                           labels=labels_es)
+    
+#la normalización al 100%
+        fig_stack.update_layout(barmode='stack', barnorm='percent') 
+        fig_stack.update_layout(xaxis_ticksuffix="%", showlegend=True)
+        fig_stack.update_xaxes(title="Porcentaje de las ventas")
+    
+        st.plotly_chart(fig_stack, use_container_width=True)
+        st.info("**Interpretación**: Aquí comparamos el 'ADN' de cada consola. Si una barra tiene un color predominante, significa que esa plataforma se especializa en ese género.")
 
 #tab4, muestra el exito segun la data
 with tab4:
@@ -272,6 +294,7 @@ with tab5:
                 </div>
                 """, unsafe_allow_html=True)
 
+        st.info("**Interpretacion:** Punto Grande: Dominancia regional (un gigante local). Punto Pequeño: Identidad regional (un tesoro local).")
 #espacio para verificar o demostrar lo que esta en el grafico
         st.divider() 
         with st.expander("🔍 Verificación técnica de los cálculos"):
