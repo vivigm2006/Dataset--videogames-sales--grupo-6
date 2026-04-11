@@ -95,10 +95,10 @@ regional persiste en como una variable significativa, en los modelos predictivos
 
 \subsection{Objetivos Específicos}
 \begin{itemize}
-  \item{Determinar patrones de consumo regional: Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.}
-  \item{Evaluar la correlación entre ubicación y género: Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.}
- \item{Analizar el impacto del hardware en las ventas regionales: Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.} 
-\item{Analizar la correlación entre las plataformas de juego y la rentabilidad por región: identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.} 
+  \item{Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.}
+  \item{Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.}
+ \item{Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.} 
+\item{Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.} 
   
 \end{itemize}
 
@@ -157,21 +157,29 @@ En esta sección se presentan las metodologías y/o test necesarios relacionados
  
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
-Desarrollo\
+El presente capítulo detalla la ruta metodológica seguida para analizar la divergencia cultural en el consumo global de videojuegos. Dado que el estudio se basa en un conjunto de datos preexistente, el enfoque se centra en el tratamiento estadístico y descriptivo de la información bibliográfica y digital.\
 
-\subsection{Item 1}
+\subsection{Tipo y Nivel de Investigación}
 
-Descripción\
+La investigación es de tipo descriptiva. Se selecciona este nivel ya que el objetivo principal consiste en caracterizar el comportamiento de las ventas en distintas regiones geográficas (Norteamérica, Europa, Japón y otros) sin manipular las variables. A través de este enfoque, se busca describir tendencias, preferencias y patrones de consumo que evidencien la divergencia cultural mencionada en el planteamiento del problema.\
 
-\subsection{Item 2}
+\subsection{Diseño de la Investigación}
 
-Descripción\
+El diseño de la investigación se caracteriza por ser no experimental, retrospectivo y transeccional. En primer lugar, al ser no experimental, no se introducen estímulos ni se controlan variables; en cambio, se observa la información tal como fue registrada en su fuente original. Además, el enfoque retrospectivo permite el análisis de datos recolectados en periodos previos, específicamente entre 1980 y 2020. Finalmente, el diseño transeccional se centra en describir el estado del mercado en un corte temporal determinado, utilizando la data disponible para ofrecer una visión clara y completa del contexto analizado.\
 
 \subsubsection{Item 2.2}
 
 Descripción\
 
-\subsection{Item n}
+\subsection{Población y Fuente de Datos}
+
+Descripción\
+
+\subsection{Técnica e Instrumentos de Recolección}
+
+Descripción\
+
+\subsection{Procesamiento, Limpieza y Análisis Exploratoria de Datos}
 
 Descripción\
 
