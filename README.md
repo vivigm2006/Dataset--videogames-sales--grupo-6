@@ -17,5 +17,5 @@ Analizar estadísticamente la relación entre la región geográfica y el éxito
 * 🚀 Analizar el impacto del hardware en las ventas regionales: Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.
 
 
-Informe Dinamico con Rmarkdown:
-Pagina Web con Streamlit: https://dashboard-videojuegos-fkrd.onrender.com/
+* Informe Dinamico con Rmarkdown:
+* Pagina Web con Streamlit: https://dashboard-videojuegos-fkrd.onrender.com/
