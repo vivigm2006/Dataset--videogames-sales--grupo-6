@@ -12,10 +12,9 @@ Analizar estadísticamente la relación entre la región geográfica y el éxito
 
 ## Objetivos especificos 
 
-* 📈 Determinar patrones de consumo regional: Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.
-* 🧪 Evaluar la correlación entre ubicación y género: Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.
-* 🚀 Analizar el impacto del hardware en las ventas regionales: Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.
-
-
+* 📈 Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.
+* 🧪 Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.
+* 🚀 Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.
+* 🕵️ Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.
 * Informe Dinamico con Rmarkdown:
 * Pagina Web con Streamlit: https://dashboard-videojuegos-fkrd.onrender.com/
