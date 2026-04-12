@@ -249,7 +249,31 @@ En esta sección se describe la arquitectura técnica de la herramienta de visua
 \item \textbf{Interfaz de Usuario:} El diseño se enfocó en la accesibilidad de la información, permitiendo que usuarios no técnicos puedan observar la correlación entre el ecosistema de hardware y el éxito comercial de los títulos.
 \item \textbf{Despliegue:} La aplicación fue desplegada en un entorno de servidor (Render), garantizando el acceso remoto para la presentación de los hallazgos de esta investigación.
 \end{enumerate}
-\chapter{Anexo C}
 
+\chapter{Anexo C: Diccionario de Variables y Fuentes de Información}
 
+A continuación, se presenta la definición técnica de las variables contenidas en el dataset "Video Game Sales" utilizado como fuente primaria para este estudio:
+
+\begin{table}[ht]
+\centering
+\caption{Diccionario de Variables}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Variable} & \textbf{Tipo de Dato} & \textbf{Descripción} \\ \hline
+Name & Cualitativa Nominal & Nombre comercial del título. \\ \hline
+Platform & Cualitativa Nominal & Plataforma o consola de lanzamiento. \\ \hline
+Genre & Cualitativa Nominal & Categoría o género del videojuego. \\ \hline
+NA\_Sales & Cuantitativa Continua & Ventas en Norteamérica (millones). \\ \hline
+EU\_Sales & Cuantitativa Continua & Ventas en Europa (millones). \\ \hline
+JP\_Sales & Cuantitativa Continua & Ventas en Japón (millones). \\ \hline
+Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hline
+\end{tabular}
+\end{table}
+
+\textbf{Detalles de la Fuente:}
+\begin{itemize}
+    \item \textbf{Repositorio:} Kaggle Data Repository.
+    \item \textbf{Volumen:} 16,598 registros de videojuegos únicos.
+    \item \textbf{Cobertura Temporal:} Registros históricos que abarcan desde el año 1980 hasta 2020, permitiendo un análisis retrospectivo de la industria.
+\end{itemize}
 
