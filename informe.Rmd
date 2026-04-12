@@ -210,19 +210,22 @@ El análisis de las plataformas reveló que el ecosistema de hardware condiciona
 
 \chapter{Conclusiones y Recomendaciones}
 
-\textbf{1.-} Conclusion 1 del trabajo de investigación.\
+\textbf{Confirmación de la Divergencia Cultural sobre la Convergencia Global-} La investigación permite concluir que, a pesar de la hiperconectividad digital, el mercado de los videojuegos no se comporta como un bloque homogéneo. La evidencia estadística recolectada entre 1980 y 2020 demuestra que las raíces geográficas mantienen un peso determinante en el éxito comercial. Se ha validado que las preferencias de consumo no han convergido hacia un estándar único, sino que se mantienen perfiles de identidad regional irreductibles que deben ser considerados en cualquier modelo predictivo de ventas.
+\textbf{Recomendación} 
+Se sugiere a las empresas desarrolladoras y distribuidoras abandonar el modelo de lanzamiento de "talla única". Es fundamental que la planificación estratégica de marketing y la localización de software se diseñen de forma independiente para cada región, respetando las idiosincrasias detectadas en lugar de intentar forzar una estandarización que eleva el riesgo de fracaso comercial.\
+
+\textbf{Especialización Regional de Géneros y Rentabilidad} Mediante la aplicación de pruebas de independencia, se concluye que existe una correlación crítica entre el territorio y el género del videojuego. Mientras que el mercado occidental (Norteamérica y Europa) presenta una hegemonía de géneros de acción y disparos (Shooters), el mercado japonés exhibe una preferencia estadística desviada hacia los juegos de rol (Role-Playing). Esta divergencia no es aleatoria y representa la diferencia más significativa en la segmentación del mercado global.\
 
 \textbf{Recomendación} 
-Recomendación 1 del trabajo de investigación.\
+Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Python para la implementación de dashboards) para realizar simulaciones de mercado previas al desarrollo de un título. Esto permite a los tomadores de decisiones visualizar escenarios de éxito según el género y el territorio, optimizando la inversión financiera.\
 
-\textbf{2.-} Conclusion 2 del trabajo de investigación.\
+\textbf{El Hardware como Filtro y Catalizador de Éxito} Se determinó que la plataforma de lanzamiento no es una variable neutra, sino un componente del ecosistema que condiciona el triunfo de ciertos géneros. El procesamiento de datos y la generación de gráficos comparativos en el dashboard de Python revelaron que la alta penetración de sistemas portátiles en Japón ha sido el vehículo principal para el dominio de los RPG, mientras que en Occidente, el dominio de consolas de alta potencia ha impulsado los géneros de deportes y acción.\
 
-\textbf{Recomendación} 
-Recomendación 2 del trabajo de investigación.\
+\textbf{Recomendación} Es imperativo que las decisiones de exclusividad se basen en el mapa de hardware regional. Se sugiere mantener actualizado el flujo de datos del dashboard para monitorear cómo el cambio generacional de consolas afecta la rentabilidad de los géneros en cada territorio.\
 
-\textbf{n.-} Conclusion n del trabajo de investigación.\
+\textbf{Riesgo Actuarial y Volatilidad del Mercado} Desde una perspectiva actuarial, se concluye que la industria es un entorno de alta volatilidad. El análisis de dispersión realizado revela que una minoría de títulos (outliers) concentra la mayor parte de las ventas. La capacidad de filtrar y explorar estos valores atípicos a través del dashboard desarrollado en Python facilita la identificación de los factores de éxito excepcionales, confirmando que la media de ventas no es un indicador confiable por sí solo.\
 
-\textbf{Recomendación} Recomendación n del trabajo de investigación.\
+\textbf{Recomendación} Se sugiere la implementación de estrategias de diversificación de portafolio. Para mitigar el riesgo de pérdida financiera, las compañías deben utilizar modelos de análisis de datos que permitan distribuir su inversión en una variedad de géneros y plataformas, apoyándose en la visualización constante de las tendencias de consumo.\
 
 \appendix
 \renewcommand{\thechapter}{\Alph{chapter}}
