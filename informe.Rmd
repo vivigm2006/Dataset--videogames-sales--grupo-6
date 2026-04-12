@@ -1,6 +1,6 @@
 ---
 # --- Metadatos Básicos ---
-title: "Título del Trabajo Final"
+title: "Videojuegos y Cultura. Una Mirada Estadística a la Divergencia de Consumo Global."
 author:
    - Victoria Gilson
    - Nahomi Herrera
