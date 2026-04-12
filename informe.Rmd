@@ -144,13 +144,13 @@ Describir la variable en estudio en el trabajo de investigación
 
 En este capítulo se establecen los fundamentos conceptuales y estadísticos que son esenciales para interpretar adecuadamente el comportamiento de los datos recolectados. La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica. Este enfoque no solo permite una comprensión más profunda de las tendencias y patrones de consumo, sino que también garantiza que las comparaciones entre las distintas regiones (Norteamérica, Europa y Japón) sean válidas desde un punto de vista científico y metodológico.\
 
+\subsection{Segmentación de Mercado Geográfico}
+
+Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades. Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado. Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance. Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
+
 \subsection{Estadística Descriptiva Univariante}
 
 Es una rama fundamental de la estadística que se dedica a la recolección, organización y caracterización de un conjunto de datos con el objetivo de describir adecuadamente sus propiedades. En el contexto de este proyecto, se aplica para analizar la distribución de las ventas globales de videojuegos, facilitando la identificación de valores atípicos (outliers) y el cálculo de medidas de tendencia central, como la media, mediana y moda, que son esenciales para comprender el comportamiento del mercado. Además, este análisis permite a las empresas no solo interpretar datos históricos, sino también prever tendencias futuras, optimizar estrategias de marketing y ajustar sus producciones según las preferencias del consumidor. La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo.\
-
-\subsection{Segmentación de Mercado Geográfica}
-
-Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades. Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado. Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance. Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
 
 \subsection{Medidas de Dispersión (Varianza y Desviación Estándar)}
 
@@ -181,10 +181,6 @@ El diseño de la investigación se caracteriza por ser no experimental, retrospe
 \subsection{Población y Fuente de Datos}
 
 De acuerdo con la naturaleza del estudio, no se trabaja con una muestra, sino con la población total de registros contenidos en la fuente seleccionada para evitar sesgos de selección. La fuente primaria de los datos es el dataset "Video Game Sales" de Kaggle, el cual funciona como una fuente secundaria para esta investigación. Este conjunto de datos está compuesto por 16,598 registros de videojuegos, integrando variables cualitativas y cuantitativas de ventas regionales. Cada registro incluye 11 variables clave, tales como: nombre, plataforma, año de lanzamiento, género, editorial y ventas regionales en diferentes áreas (NA, EU, JP, Other y Global).\
-
-\subsection{Técnica e Instrumentos de Recolección}
-
-La técnica utilizada es la observación documental y el análisis de datos. Al no existir una recolección primaria (encuestas), el instrumento es la base de datos digital en formato .csv, la cual permite la extracción de información sistemática sobre el volumen de ventas global.\
 
 \subsection{Procesamiento, Limpieza y Análisis Exploratoria de Datos}
 
