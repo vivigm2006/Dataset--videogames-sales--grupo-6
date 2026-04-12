@@ -1,6 +1,6 @@
 ---
 # --- Metadatos Básicos ---
-title: "Videojuegos y Cultura. Una Mirada Estadística a la Divergencia de Consumo Global."
+title: "Análisis Estadístico de la Divergencia Cultural en el Consumo Global de Videojuegos."
 author:
    - Victoria Gilson
    - Nahomi Herrera
