@@ -103,19 +103,28 @@ regional persiste en como una variable significativa, en los modelos predictivos
 \end{itemize}
 
 
-\section{Cobertura}
-
-\subsection{Horizontal}
-
-La investigación abarca de manera transversal las siguientes dimensiones del mercado global de videojuegos:
-Geográfica: Análisis comparativo de los mercados de Norteamérica, Europa y Japón. Temporal: Evaluación de tendencias y ciclos económicos desde 1980 hasta 2020. Técnica y Operativa: Intersección de variables de hardware (Platform), categorías de software (Genre) y rendimiento comercial (Global_Sales)\
-
-
-
-\subsection{Vertical}
-
-Describir la cobertura Vertical del trabajo de investigación
-
+\begin{table}[ht]
+\centering
+\caption{Variables consideradas en el estudio} 
+\resizebox{12cm}{!} {
+\begin{tabular}{cll}
+  \hline
+  \textbf{VARIABLE} & \textbf{DESCRIPCIÓN} \\ 
+  \hline
+  Name & Nombre comercial del videojuego \\ 
+  Platform & Plataforma de lanzamiento (e.g., Wii, PS4, X360) \\ 
+  Year & Año de lanzamiento del título \\ 
+  Genre & Categoría del juego (e.g., Sports, Action) \\ 
+  Publisher & Compañía editora responsable de la distribución \\ 
+  NA\_Sales & Ventas en Norteamérica (Millones de unidades) \\ 
+  EU\_Sales & Ventas en Europa (Millones de unidades) \\ 
+  JP\_Sales & Ventas en Japón (Millones de unidades) \\ 
+  Other\_Sales & Ventas en el resto del mundo \\ 
+  Global\_Sales & Suma total de ventas a nivel mundial \\ 
+   \hline
+\end{tabular}
+}
+\end{table}
 
 \section{Periodo de Referencia}
 
@@ -181,19 +190,19 @@ Para garantizar la integridad y exactitud de los resultados estadísticos, se em
 
 \chapter{Análisis de Resultados}
 
-{\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas y las ventajas y desventajas al aplicar dichos tests.}
+{\small A continuación se exponen los resultados obtenidos tras la ejecución de la ruta metodológica delineada en el capítulo precedente. Mediante el análisis estadístico descriptivo y el procesamiento exploratorio de los datos en R, se ha logrado caracterizar el comportamiento de las variables fundamentales del estudio. Más allá de una simple evaluación sobre las ventajas y limitaciones de las pruebas estadísticas aplicadas, este apartado se enfoca en interpretar los hallazgos consolidados en nuestro dashboard interactivo. El objetivo central es traducir estas cifras brutas en evidencia concreta que demuestre cómo la identidad geográfica y los ecosistemas de plataformas moldean de manera decisiva el mercado global de videojuegos.}
 
-\section{Presentación de resultados 1}
+\section{Disparidades Geográficas en el Volumen de Ventas}
 
-Descripción\
+Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón. Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers). Desde una perspectiva actuarial, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
 
-\section{Presentación de resultados 2}
+\section{Validación de la Divergencia Cultural por Género}
 
-Descripción\
+Al evaluar la asociación entre región y género, se confirmó la existencia de una marcada divergencia cultural. Mientras que los mercados occidentales muestran una preferencia estadística por los géneros de Action y Shooter, el mercado japonés se inclina predominantemente hacia el Role-Playing. La aplicación de la lógica de independencia demuestra que estas preferencias no son casuales, validando que la identidad regional es un factor determinante que desafía la hipótesis de un consumo global estandarizado.\
 
-\section{Presentación de resultados n}
+\section{El Hardware como Catalizador del Éxito Regional}
 
-Descripción\
+El análisis de las plataformas reveló que el ecosistema de hardware condiciona la rentabilidad de los géneros. En Japón, la adopción de sistemas portátiles ha potenciado el éxito del género RPG, mientras que en Occidente, las consolas de alta potencia han actuado como catalizadores para géneros de acción y deportes. Estos hallazgos demuestran que la elección de la plataforma es una decisión estratégica que debe alinearse con el perfil tecnológico de cada territorio para mitigar riesgos financieros.\
 
 \chapter{Conclusiones y Recomendaciones}
 
