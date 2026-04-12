@@ -240,8 +240,15 @@ Este anexo detalla la lógica de programación aplicada en el entorno RStudio pa
 \item \textbf{Prueba de Independencia:} Se ejecutó el test de Chi-cuadrado de Pearson (\texttt{chisq.test()}) para evaluar la asociación entre el género del videojuego y la región de consumo, fundamentando estadísticamente la tesis de la divergencia cultural.
 \end{enumerate}
 
-\chapter{Anexo B}
+\chapter{Anexo B: Arquitectura del Dashboard Interactivo en Python}
+En esta sección se describe la arquitectura técnica de la herramienta de visualización desarrollada en Python, la cual permite la exploración interactiva de los resultados obtenidos. El dashboard se estructuró bajo los siguientes componentes:
 
+\begin{enumerate}
+\item \textbf{Gestión de Datos:} Uso de la librería \textit{Pandas} para la carga y filtrado eficiente de los 16,598 registros del dataset.
+\item \textbf{Visualización Dinámica:} Implementación de gráficos interactivos que permiten comparar las cuotas de mercado regionales. El sistema permite filtrar por plataforma y género para identificar visualmente la concentración de ventas y la presencia de \textit{outliers}.
+\item \textbf{Interfaz de Usuario:} El diseño se enfocó en la accesibilidad de la información, permitiendo que usuarios no técnicos puedan observar la correlación entre el ecosistema de hardware y el éxito comercial de los títulos.
+\item \textbf{Despliegue:} La aplicación fue desplegada en un entorno de servidor (Render), garantizando el acceso remoto para la presentación de los hallazgos de esta investigación.
+\end{enumerate}
 \chapter{Anexo C}
 
 
