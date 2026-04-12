@@ -33,7 +33,11 @@ output:
 
 # --- Resumen (Abstract) ---
 abstract: |
-  Resumen del trabajo de investigación...
+  Hoy en día, los videojuegos no son solo entretenimiento; se han convertido en un motor económico que factura más que el cine y la música juntos. Pero, ¿realmente todos jugamos lo mismo en un mundo hiperconectado? Esta investigación analiza si el éxito de un título es pura suerte o si, estadísticamente, depende de dónde vivas.
+ 
+  A través de un análisis de más de 16,000 registros procesados en R, el estudio revela que la "globalización" del consumo es, en parte, un mito. Mientras que en Norteamérica y Europa nos apasionan los juegos de disparos y acción, en Japón el trono le pertenece indiscutiblemente a los juegos de rol (RPG). Además, descubrimos que la consola que elijas no es un dato menor: el hardware actúa como un portero que decide qué géneros triunfan en cada región.
+  
+  En conclusión, este trabajo demuestra que la identidad cultural sigue pesando más que la tendencia global. Para quienes nos dedicamos a la estadística y las ciencias actuariales, entender estos patrones no es solo una curiosidad, sino una herramienta vital para predecir riesgos y tomar decisiones financieras inteligentes en una industria que no para de crecer.
 ---
 
 ```{r setup, include=FALSE}
