@@ -230,7 +230,15 @@ Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Py
 \appendix
 \renewcommand{\thechapter}{\Alph{chapter}}
 
-\chapter{Anexo A}
+\chapter{Anexo A:Scripts de Procesamiento y Análisis en R}
+Este anexo detalla la lógica de programación aplicada en el entorno RStudio para el tratamiento de la base de datos y la ejecución de las pruebas estadísticas. El flujo de trabajo se dividió en cuatro fases fundamentales:
+
+\begin{enumerate}
+\item \textbf{Limpieza de Datos:} Se identificaron valores nulos mediante la función \texttt{is.na()} y se localizaron registros incompletos con \texttt{which()}. Para asegurar la integridad del análisis actuarial, se utilizaron funciones de depuración para omitir registros con datos ausentes en las variables de tiempo y autoría.
+\item \textbf{Transformación de Variables:} Las variables cualitativas como \textit{Genre} y \textit{Platform} fueron convertidas en factores utilizando \texttt{as.factor()}, permitiendo su tratamiento como variables categóricas para el cálculo de frecuencias y segmentación geográfica.
+\item \textbf{Análisis Descriptivo:} Se emplearon las funciones \texttt{summary()} y \texttt{aggregate()} para calcular las medidas de tendencia central y dispersión (media, mediana y desviación estándar) de las ventas en cada región (NA, EU, JP).
+\item \textbf{Prueba de Independencia:} Se ejecutó el test de Chi-cuadrado de Pearson (\texttt{chisq.test()}) para evaluar la asociación entre el género del videojuego y la región de consumo, fundamentando estadísticamente la tesis de la divergencia cultural.
+\end{enumerate}
 
 \chapter{Anexo B}
 
