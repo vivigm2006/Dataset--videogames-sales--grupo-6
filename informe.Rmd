@@ -292,6 +292,33 @@ La visualización confirma que el mercado de videojuegos no sigue una distribuci
 \section{Validación de la Divergencia Cultural por Género}
 
 Al evaluar la asociación entre región y género, se confirmó la existencia de una marcada divergencia cultural. Mientras que los mercados occidentales muestran una preferencia estadística por los géneros de Action y Shooter, el mercado japonés se inclina predominantemente hacia el Role-Playing. La aplicación de la lógica de independencia demuestra que estas preferencias no son casuales, validando que la identidad regional es un factor determinante que desafía la hipótesis de un consumo global estandarizado.\
+```{r heatmap-ventas, fig.width=8, fig.height=6, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+heatmap_data <- df_clean %>%
+  group_by(Genre) %>%
+  summarise(
+    Norteamerica = sum(NA_Sales),
+    Europa = sum(EU_Sales),
+    Japon = sum(JP_Sales),
+    Otros = sum(Other_Sales)
+  ) %>%
+  pivot_longer(cols = -Genre, names_to = "Region", values_to = "Ventas")
+
+ggplot(heatmap_data, aes(x = Region, y = Genre, fill = Ventas)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "#0d0887", "#19D3F3") + 
+  theme_minimal() +
+  labs(
+    title = "Preferencia de Géneros por Región",
+    subtitle = "Ventas totales acumuladas",
+    x = "Región Geográfica",
+    y = "Género del Videojuego",
+    fill = "Ventas (Millones)"
+  )
+```
+###Divergencia CUltural
+El mapa de calor revela una marcada divergencia geográfica en el consumo: mientras que Norteamérica y Europa presentan una alta densidad de ventas en géneros de acción y deportes, confirmando su papel como mercados líderes en occidente, Japón muestra una preferencia cultural única hacia el género Role-Playing, destacándose claramente sobre el resto de las regiones. Por otro lado, géneros como Strategy y Adventure mantienen una baja intensidad comercial de forma global, lo que demuestra que la identidad regional es un factor determinante que desafía la idea de un mercado de videojuegos totalmente estandarizado.
 
 \section{El Hardware como Catalizador del Éxito Regional}
 
