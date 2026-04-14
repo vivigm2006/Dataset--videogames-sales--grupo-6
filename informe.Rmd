@@ -1,13 +1,10 @@
 ---
-# --- Metadatos Básicos ---
 title: "Análisis Estadístico de la Divergencia Cultural en el Consumo Global de Videojuegos."
 author:
    - Victoria Gilson
    - Nahomi Herrera
    - Allan Arcia
 date: "Febrero 2026"
-
-# --- Metadatos Específicos de Plantilla ---
 degree: "Computación I"
 director: 
   - Jesus Ochoa 
@@ -16,13 +13,8 @@ lugar: "Caracas"
 facultad: 
   - Facultad de Ciencias Económicas y Sociales
   - Escuela de Estadistica y Ciencias Actuariales
-# Ruta al escudo (relativa al archivo .Rmd)
 escudo: "Latex/Classes/Escudos/faces"
-
-# --- Bibliografía ---
 bibliography: bibliografia.bib
-
-# --- Configuración de Salida ---
 output: 
   pdf_document:
     template: template.tex  # Llamamos al archivo de plantilla
@@ -30,14 +22,14 @@ output:
     toc: true                      # Generar índice
     number_sections: true
     citation_package: natbib       # Importante: forzar natbib porque tu plantilla lo usa
-
-# --- Resumen (Abstract) ---
 abstract: |
   Hoy en día, los videojuegos no son solo entretenimiento; se han convertido en un motor económico que factura más que el cine y la música juntos. Pero, ¿realmente todos jugamos lo mismo en un mundo hiperconectado? Esta investigación analiza si el éxito de un título es pura suerte o si, estadísticamente, depende de dónde vivas.
- 
-  A través de un análisis de más de 16,000 registros procesados en R, el estudio revela que la "globalización" del consumo es, en parte, un mito. Mientras que en Norteamérica y Europa nos apasionan los juegos de disparos y acción, en Japón el trono le pertenece indiscutiblemente a los juegos de rol (RPG). Además, descubrimos que la consola que elijas no es un dato menor: el hardware actúa como un portero que decide qué géneros triunfan en cada región.
   
   En conclusión, este trabajo demuestra que la identidad cultural sigue pesando más que la tendencia global. Para quienes nos dedicamos a la estadística y las ciencias actuariales, entender estos patrones no es solo una curiosidad, sino una herramienta vital para predecir riesgos y tomar decisiones financieras inteligentes en una industria que no para de crecer.
+  A través de un análisis de más de 16,000 registros procesados en R, el estudio revela que la "globalización" del consumo es, en parte, un mito. Mientras que en Norteamérica y Europa nos apasionan los juegos de disparos y acción, en Japón el trono le pertenece indiscutiblemente a los juegos de rol (RPG). Además, descubrimos que la consola que elijas no es un dato menor: el hardware actúa como un portero que decide qué géneros triunfan en cada región.
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
@@ -61,19 +53,27 @@ library(scales)
 
 \chapter*{Introducción}
 
-El crecimiento exponencial de la industria de los videojuegos en las últimas décadas la ha consolidado no solo como un fenómeno cultural, sino como uno de los pilares fundamentales de la economía digital global, superando en ingresos combinados a las industrias del cine y la música **(Newzoo, 2023)**. No obstante, desde una perspectiva estadística y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra intrínsecamente ligado a determinantes geográficos, idiosincrasias culturales y dinámicas de mercado altamente heterogéneas **(Hosoi, 2019)**.
+El crecimiento exponencial de la industria de los videojuegos en las últimas décadas la ha consolidado no solo como un fenómeno cultural, sino como uno de los pilares fundamentales de la economía digital global, superando en ingresos combinados a las industrias del cine y la música **(Newzoo, 2023)**.
+No obstante, desde una perspectiva estadística y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra intrínsecamente ligado a determinantes geográficos, idiosincrasias culturales y dinámicas de mercado altamente heterogéneas **(Hosoi, 2019)**.
 
-El presente informe estadístico tiene como propósito fundamental analizar y modelar el comportamiento de las ventas globales de videojuegos, centrando el estudio en las disparidades de consumo observadas en las tres regiones de mayor impacto histórico. La investigación se fundamenta en la premisa de que las preferencias de género no son universales, sino que responden a patrones de identidad regional que pueden ser cuantificados y validados estadísticamente **(Vogel, 2020)**.
+El presente informe estadístico tiene como propósito fundamental analizar y modelar el comportamiento de las ventas globales de videojuegos, centrando el estudio en las disparidades de consumo observadas en las tres regiones de mayor impacto histórico.
+La investigación se fundamenta en la premisa de que las preferencias de género no son universales, sino que responden a patrones de identidad regional que pueden ser cuantificados y validados estadísticamente **(Vogel, 2020)**.
 
-Mediante el uso de herramientas de estadística descriptiva avanzada y técnicas de visualización de datos, este estudio no solo identifica tendencias históricas de ventas desde 1980 hasta la actualidad, sino que establece un marco metodológico para el desarrollo de modelos predictivos de riesgo y éxito comercial **(Wickham & Grolemund, 2017)**. De este modo, se busca proporcionar una visión integral que permita comprender las complejidades de un mercado global que, a pesar de la digitalización, se mantiene firmemente anclado a sus raíces geográficas.
-
+Mediante el uso de herramientas de estadística descriptiva avanzada y técnicas de visualización de datos, este estudio no solo identifica tendencias históricas de ventas desde 1980 hasta la actualidad, sino que establece un marco metodológico para el desarrollo de modelos predictivos de riesgo y éxito comercial **(Wickham & Grolemund, 2017)**.
+De este modo, se busca proporcionar una visión integral que permita comprender las complejidades de un mercado global que, a pesar de la digitalización, se mantiene firmemente anclado a sus raíces geográficas.
 
 \chapter{Planteamiento del Problema}
-En el contexto actual de una globalización digital acelerada, existe la percepción generalizada de que el acceso irrestricto a la información y el comercio electrónico han homogeneizado los patrones de consumo a nivel global. Bajo esta premisa, se esperaría que el éxito comercial de un título en la industria de los videojuegos dependiera exclusivamente de su calidad técnica o presupuesto de marketing. No obstante, la evidencia empírica sugiere que el desempeño de un producto no es uniforme, sino que está intrínsecamente ligado a la resonancia cultural y a las idiosincrasias de cada mercado regional **(Hosoi, 2019)**.
 
-El núcleo del problema radica en una asimetría informativa por parte de las empresas desarrolladoras y distribuidoras. A menudo, el lanzamiento de títulos se ejecuta bajo un modelo de "talla única", ignorando cómo los factores geográficos y sociodemográficos moldean las preferencias de juego. Esta falta de comprensión sobre la segmentación cultural no solo deriva en fracasos comerciales evitables, sino que evidencia un vacío en la investigación cuantitativa que valide si las fronteras culturales siguen siendo vigentes en la era de la hiperconectividad **(Vogel, 2020)**.
+En el contexto actual de una globalización digital acelerada, existe la percepción generalizada de que el acceso irrestricto a la información y el comercio electrónico han homogeneizado los patrones de consumo a nivel global.
+Bajo esta premisa, se esperaría que el éxito comercial de un título en la industria de los videojuegos dependiera exclusivamente de su calidad técnica o presupuesto de marketing.
+No obstante, la evidencia empírica sugiere que el desempeño de un producto no es uniforme, sino que está intrínsecamente ligado a la resonancia cultural y a las idiosincrasias de cada mercado regional **(Hosoi, 2019)**.
 
-A pesar de la aparente integración digital, persiste la incertidumbre sobre si las preferencias de consumo han convergido realmente hacia un estándar global o si, por el contrario, las regiones mantienen perfiles de identidad irreductibles. Por lo tanto, esta investigación se propone cuantificar el peso del factor geográfico como determinante del éxito o fracaso de un género específico.
+El núcleo del problema radica en una asimetría informativa por parte de las empresas desarrolladoras y distribuidoras.
+A menudo, el lanzamiento de títulos se ejecuta bajo un modelo de "talla única", ignorando cómo los factores geográficos y sociodemográficos moldean las preferencias de juego.
+Esta falta de comprensión sobre la segmentación cultural no solo deriva en fracasos comerciales evitables, sino que evidencia un vacío en la investigación cuantitativa que valide si las fronteras culturales siguen siendo vigentes en la era de la hiperconectividad **(Vogel, 2020)**.
+
+A pesar de la aparente integración digital, persiste la incertidumbre sobre si las preferencias de consumo han convergido realmente hacia un estándar global o si, por el contrario, las regiones mantienen perfiles de identidad irreductibles.
+Por lo tanto, esta investigación se propone cuantificar el peso del factor geográfico como determinante del éxito o fracaso de un género específico.
 
 Debido a esto, se plantea las siguientes preguntas de investigación:
 
@@ -83,20 +83,22 @@ Debido a esto, se plantea las siguientes preguntas de investigación:
 
 \textbf{3.} ¿De qué manera el ecosistema de hardware (Platform) actúa como un catalizador en la rentabilidad regional, condicionando el éxito comercial de ciertos géneros de videojuegos según el sistema predominante en cada territorio?
 
-
 \section{Justificación}
 
-Este estudio es fundamental para entender el comportamiento del consumidor desde una perspectiva de mercadeo y estadística aplicada. A través del conocimiento obtenido sobre los géneros que podrían fallar y/o triunfar en ciertas regiones, las empresas pueden lograr una optimización de recursos, siendo este un tema central en la toma de decisiones bajo incertidumbre **(Vogel, 2020)**. Para un estudiante de la Escuela de Estadística y Ciencias Actuariales, trabajar con este volumen de datos permite aplicar técnicas de limpieza, validación y análisis exploratorio en R, fundamentales para garantizar la integridad de los modelos predictivos **(Wickham & Grolemund, 2017)**. 
+Este estudio es fundamental para entender el comportamiento del consumidor desde una perspectiva de mercadeo y estadística aplicada.
+A través del conocimiento obtenido sobre los géneros que podrían fallar y/o triunfar en ciertas regiones, las empresas pueden lograr una optimización de recursos, siendo este un tema central en la toma de decisiones bajo incertidumbre **(Vogel, 2020)**.
+Para un estudiante de la Escuela de Estadística y Ciencias Actuariales, trabajar con este volumen de datos permite aplicar técnicas de limpieza, validación y análisis exploratorio en R, fundamentales para garantizar la integridad de los modelos predictivos **(Wickham & Grolemund, 2017)**.
 
-Desde el punto de vista estratégico, esta investigación busca comprender por qué géneros específicos dominan mercados particulares, optimizando la toma de decisiones en la distribución y localización de software para evitar el riesgo de una estandarización ineficiente. En un entorno donde la "big data" conduce a normalizar el consumo, este estudio se propone demostrar, mediante evidencias estadísticas, que la identidad regional persiste como una variable significativa en los modelos actuales. El fin último es analizar estadísticamente la relación entre la región geográfica y el éxito comercial, determinando si existen diferencias significativas en las preferencias culturales de consumo entre Japón, Norteamérica y Europa.
+Desde el punto de vista estratégico, esta investigación busca comprender por qué géneros específicos dominan mercados particulares, optimizando la toma de decisiones en la distribución y localización de software para evitar el riesgo de una estandarización ineficiente.
+En un entorno donde la "big data" conduce a normalizar el consumo, este estudio se propone demostrar, mediante evidencias estadísticas, que la identidad regional persiste como una variable significativa en los modelos actuales.
+El fin último es analizar estadísticamente la relación entre la región geográfica y el éxito comercial, determinando si existen diferencias significativas en las preferencias culturales de consumo entre Japón, Norteamérica y Europa.
 
 \section{Objetivos}
- 
+
 \subsection{Objetivo General}
 \begin{itemize}
   \item{Analizar estadísticamente la relación entre la ubicación geográfica y el éxito comercial de los videojuegos, mediante el procesamiento de datos en R y el desarrollo de una interfaz interactiva, para determinar cómo la identidad regional y la adopción de plataformas condicionan los patrones de consumo global.}
 \end{itemize}
-
 \subsection{Objetivos Específicos}
 \begin{itemize}
   \item{Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.}
@@ -105,8 +107,6 @@ Desde el punto de vista estratégico, esta investigación busca comprender por q
 \item{Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.} 
   
 \end{itemize}
-
-
 \begin{table}[ht]
 \centering
 \caption{Variables consideradas en el estudio} 
@@ -142,66 +142,97 @@ Describir la variable en estudio en el trabajo de investigación
 
 \section{Bases Teóricas}
 
-En este capítulo se establecen los fundamentos conceptuales y estadísticos que son esenciales para interpretar adecuadamente el comportamiento de los datos recolectados. La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica. Este enfoque no solo permite una comprensión más profunda de las tendencias y patrones de consumo, sino que también garantiza que las comparaciones entre las distintas regiones (Norteamérica, Europa y Japón) sean válidas desde un punto de vista científico y metodológico.\
+En este capítulo se establecen los fundamentos conceptuales y estadísticos que son esenciales para interpretar adecuadamente el comportamiento de los datos recolectados.
+La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica.
+Este enfoque no solo permite una comprensión más profunda de las tendencias y patrones de consumo, sino que también garantiza que las comparaciones entre las distintas regiones (Norteamérica, Europa y Japón) sean válidas desde un punto de vista científico y metodológico.\
 
 \subsection{La Industria de los Videojuegos}
 
-Un videojuego es una aplicación interactiva diseñada para el entretenimiento, que permite simular experiencias a través de controles en la pantalla de dispositivos electrónicos. Desde un enfoque económico, esta industria se ha vuelto una de las más dinámicas, superando en ingresos al cine y la música juntos.
-Además de la creación de juegos, abarca un ecosistema que incluye hardware, distribución digital, eSports y servicios como streaming y realidad virtual. Su impacto va más allá del entretenimiento, influyendo en la educación y el desarrollo de habilidades, y fomentando comunidades globales de jugadores.\
+Un videojuego es una aplicación interactiva diseñada para el entretenimiento, que permite simular experiencias a través de controles en la pantalla de dispositivos electrónicos.
+Desde un enfoque económico, esta industria se ha vuelto una de las más dinámicas, superando en ingresos al cine y la música juntos.
+Además de la creación de juegos, abarca un ecosistema que incluye hardware, distribución digital, eSports y servicios como streaming y realidad virtual.
+Su impacto va más allá del entretenimiento, influyendo en la educación y el desarrollo de habilidades, y fomentando comunidades globales de jugadores.\
 
 \subsection{Géneros de Videojuegos}
 
-La clasificación por géneros es fundamental para el análisis de datos en la industria de los videojuegos, ya que permite agrupar productos con mecánicas y públicos objetivos similares. Entre los géneros más representativos en los registros de ventas globales se encuentran:\
+La clasificación por géneros es fundamental para el análisis de datos en la industria de los videojuegos, ya que permite agrupar productos con mecánicas y públicos objetivos similares.
+Entre los géneros más representativos en los registros de ventas globales se encuentran:\
 
 \subsubsection{Action}
 
-Enfocados en desafíos físicos que requieren coordinación ojo-mano y reflejos. Suelen incluir elementos como combates rápidos, plataformas y exploración. Icónicos son "Super Mario Bros." y "Devil May Cry", que no solo ofrecen adrenalina, sino también niveles de dificultad que mantienen a los jugadores comprometidos.\
+Enfocados en desafíos físicos que requieren coordinación ojo-mano y reflejos.
+Suelen incluir elementos como combates rápidos, plataformas y exploración.
+Icónicos son "Super Mario Bros." y "Devil May Cry", que no solo ofrecen adrenalina, sino también niveles de dificultad que mantienen a los jugadores comprometidos.\
 
 \subsubsection{Sports}
 
-Simulaciones de deportes reales o ficticios (fútbol, baloncesto, carreras). Los títulos más populares, como "FIFA" y "NBA 2K", permiten a los jugadores experimentar la emoción de competir en sus deportes favoritos, a menudo incluyendo modos de carrera y gestión de equipos que enriquecen la experiencia.\
+Simulaciones de deportes reales o ficticios (fútbol, baloncesto, carreras).
+Los títulos más populares, como "FIFA" y "NBA 2K", permiten a los jugadores experimentar la emoción de competir en sus deportes favoritos, a menudo incluyendo modos de carrera y gestión de equipos que enriquecen la experiencia.\
 
 \subsubsection{Role-Playing}
 
-Juegos donde el usuario controla las acciones de un personaje inmerso en un mundo detallado, con un fuerte enfoque en la narrativa y el progreso de estadísticas. Los RPGs, como "The Witcher" y "Final Fantasy", ofrecen mundos expansivos y tramas profundas, permitiendo a los jugadores tomar decisiones que afectan el desarrollo de la historia y la evolución de sus personajes.\
+Juegos donde el usuario controla las acciones de un personaje inmerso en un mundo detallado, con un fuerte enfoque en la narrativa y el progreso de estadísticas.
+Los RPGs, como "The Witcher" y "Final Fantasy", ofrecen mundos expansivos y tramas profundas, permitiendo a los jugadores tomar decisiones que afectan el desarrollo de la historia y la evolución de sus personajes.\
 
 \subsubsection{Shooter}
 
-Centrados en el uso de armas de proyectiles, divididos comúnmente en primera persona (FPS) y tercera persona (TPS).Juegos como "Call of Duty" y "Overwatch" ofrecen intensas experiencias de combate, donde la estrategia y el trabajo en equipo son cruciales. Además, los shooters modernos suelen incluir modos multijugador competitivos que fomentan la interacción social.\
+Centrados en el uso de armas de proyectiles, divididos comúnmente en primera persona (FPS) y tercera persona (TPS).Juegos como "Call of Duty" y "Overwatch" ofrecen intensas experiencias de combate, donde la estrategia y el trabajo en equipo son cruciales.
+Además, los shooters modernos suelen incluir modos multijugador competitivos que fomentan la interacción social.\
 
 Cada uno de estos géneros no solo define el tipo de experiencia que ofrecen, sino que también influye en la cultura del gaming y en las comunidades que se forman alrededor de ellos.\
 
 \subsection{Plataformas de Distribución}
 
-La plataforma se refiere al hardware específico para el cual se desarrolla y ejecuta el software. En el análisis de tendencias históricas de ventas, destacan dos ecosistemas por su volumen de datos:\
+La plataforma se refiere al hardware específico para el cual se desarrolla y ejecuta el software.
+En el análisis de tendencias históricas de ventas, destacan dos ecosistemas por su volumen de datos:\
 
 \subsubsection{Consolas de Sobremesa}
 
-Desarrolladas por Sony Interactive Entertainment, las consolas PlayStation, en particular la PS2 y la PS4, han sido históricamente líderes en ventas de software. Estas consolas representan un estándar de rendimiento técnico y cuentan con una base de usuarios global, lo que facilita la recolección de datos masivos sobre preferencias de consumo en diversas regiones. Su ecosistema robusto también incluye servicios en línea, lo que amplía las oportunidades para la interacción social y la monetización.\
+Desarrolladas por Sony Interactive Entertainment, las consolas PlayStation, en particular la PS2 y la PS4, han sido históricamente líderes en ventas de software.
+Estas consolas representan un estándar de rendimiento técnico y cuentan con una base de usuarios global, lo que facilita la recolección de datos masivos sobre preferencias de consumo en diversas regiones.
+Su ecosistema robusto también incluye servicios en línea, lo que amplía las oportunidades para la interacción social y la monetización.\
 
 \subsubsection{Consolas Portátiles}
 
-Las plataformas portátiles introdujeron un cambio de paradigma en la movilidad y la accesibilidad. La Nintendo DS es un caso relevante, ya que su capacidad de penetración en mercados no convencionales ha expandido la demografía de jugadores, alterando las curvas de ventas tradicionales de la industria. Además, su diseño innovador y su enfoque en la jugabilidad han permitido atraer a públicos diversos, desde jugadores casuales hasta más experimentados.\
+Las plataformas portátiles introdujeron un cambio de paradigma en la movilidad y la accesibilidad.
+La Nintendo DS es un caso relevante, ya que su capacidad de penetración en mercados no convencionales ha expandido la demografía de jugadores, alterando las curvas de ventas tradicionales de la industria.
+Además, su diseño innovador y su enfoque en la jugabilidad han permitido atraer a públicos diversos, desde jugadores casuales hasta más experimentados.\
 
 En conjunto, estas plataformas no solo han influido en el desarrollo de videojuegos, sino que también han moldeado la manera en que los consumidores interactúan con el entretenimiento digital, creando comunidades y experiencias compartidas.\
 
 \subsection{Segmentación de Mercado Geográfico}
 
-Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades. Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado. Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance. Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
+Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades.
+Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado.
+Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance.
+Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
 
 \subsection{Estadística Descriptiva Univariante}
 
-Es una rama fundamental de la estadística que se dedica a la recolección, organización y caracterización de un conjunto de datos con el objetivo de describir adecuadamente sus propiedades. En el contexto de este proyecto, se aplica para analizar la distribución de las ventas globales de videojuegos, facilitando la identificación de valores atípicos (outliers) y el cálculo de medidas de tendencia central, como la media, mediana y moda, que son esenciales para comprender el comportamiento del mercado. Además, este análisis permite a las empresas no solo interpretar datos históricos, sino también prever tendencias futuras, optimizar estrategias de marketing y ajustar sus producciones según las preferencias del consumidor. La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo.\
+Es una rama fundamental de la estadística que se dedica a la recolección, organización y caracterización de un conjunto de datos con el objetivo de describir adecuadamente sus propiedades.
+En el contexto de este proyecto, se aplica para analizar la distribución de las ventas globales de videojuegos, facilitando la identificación de valores atípicos (outliers) y el cálculo de medidas de tendencia central, como la media, mediana y moda, que son esenciales para comprender el comportamiento del mercado.
+Además, este análisis permite a las empresas no solo interpretar datos históricos, sino también prever tendencias futuras, optimizar estrategias de marketing y ajustar sus producciones según las preferencias del consumidor.
+La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo.\
 
 \subsection{Medidas de Dispersión (Varianza y Desviación Estándar)}
 
-Son parámetros estadísticos que reflejan el grado de variabilidad de los datos en relación con la media aritmética. En el análisis de este conjunto de datos, su aplicación es fundamental para evaluar la volatilidad del éxito de los videojuegos. Por ejemplo, una desviación estándar alta en las ventas de un género específico puede señalar un mercado de alto riesgo, pero también con un potencial significativo de grandes retornos, lo que es crucial para la evaluación de proyectos financieros. Además, estas medidas permiten a las empresas identificar tendencias y comportamientos extremos en el mercado, lo que puede ser útil para la planificación estratégica y la gestión de riesgos. Al comprender la dispersión de las ventas, las organizaciones pueden tomar decisiones más informadas sobre inversiones y desarrollos futuros, optimizando así sus oportunidades de éxito en un entorno competitivo.\
+Son parámetros estadísticos que reflejan el grado de variabilidad de los datos en relación con la media aritmética.
+En el análisis de este conjunto de datos, su aplicación es fundamental para evaluar la volatilidad del éxito de los videojuegos.
+Por ejemplo, una desviación estándar alta en las ventas de un género específico puede señalar un mercado de alto riesgo, pero también con un potencial significativo de grandes retornos, lo que es crucial para la evaluación de proyectos financieros.
+Además, estas medidas permiten a las empresas identificar tendencias y comportamientos extremos en el mercado, lo que puede ser útil para la planificación estratégica y la gestión de riesgos.
+Al comprender la dispersión de las ventas, las organizaciones pueden tomar decisiones más informadas sobre inversiones y desarrollos futuros, optimizando así sus oportunidades de éxito en un entorno competitivo.\
 
 \subsection{Correlación de Pearson}
 
-Es una medida que evalúa la dependencia lineal entre dos variables aleatorias cuantitativas. En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dirección de la relación entre el año de lanzamiento de los videojuegos y su volumen de ventas. Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive. Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria. Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing. Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
+Es una medida que evalúa la dependencia lineal entre dos variables aleatorias cuantitativas.
+En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dirección de la relación entre el año de lanzamiento de los videojuegos y su volumen de ventas.
+Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive.
+Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria.
+Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing.
+Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
 
 \chapter{Marco Metódico}
+
 ```{r Cargar y Limpiar Datos, include=FALSE}
 library(tidyverse)
 
@@ -220,28 +251,44 @@ df_clean <- df %>%
   )
 ```
 
-
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
-El presente capítulo detalla la ruta metodológica seguida para analizar la divergencia cultural en el consumo global de videojuegos. Dado que el estudio se basa en un conjunto de datos preexistente, el enfoque se centra en el tratamiento estadístico y descriptivo de la información bibliográfica y digital.\
+El presente capítulo detalla la ruta metodológica seguida para analizar la divergencia cultural en el consumo global de videojuegos.
+Dado que el estudio se basa en un conjunto de datos preexistente, el enfoque se centra en el tratamiento estadístico y descriptivo de la información bibliográfica y digital.\
 
 \subsection{Tipo y Nivel de Investigación}
 
-La investigación es de tipo descriptiva corracional. Se selecciona este nivel ya que el objetivo principal consiste en caracterizar el comportamiento de las ventas en distintas regiones geográficas (Norteamérica, Europa, Japón y otros) sin manipular las variables. A través de este enfoque, se busca describir tendencias, preferencias y patrones de consumo que evidencien la divergencia cultural mencionada en el planteamiento del problema.\
+La investigación es de tipo descriptiva corracional.
+Se selecciona este nivel ya que el objetivo principal consiste en caracterizar el comportamiento de las ventas en distintas regiones geográficas (Norteamérica, Europa, Japón y otros) sin manipular las variables.
+A través de este enfoque, se busca describir tendencias, preferencias y patrones de consumo que evidencien la divergencia cultural mencionada en el planteamiento del problema.\
 
 \subsection{Diseño de la Investigación}
 
-El diseño de la investigación se caracteriza por ser no experimental, retrospectivo y transeccional. En primer lugar, al ser no experimental, no se introducen estímulos ni se controlan variables; en cambio, se observa la información tal como fue registrada en su fuente original. Además, el enfoque retrospectivo permite el análisis de datos recolectados en periodos previos, específicamente entre 1980 y 2020. Finalmente, el diseño transeccional se centra en describir el estado del mercado en un corte temporal determinado, utilizando la data disponible para ofrecer una visión clara y completa del contexto analizado.\
+El diseño de la investigación se caracteriza por ser no experimental, retrospectivo y transeccional.
+En primer lugar, al ser no experimental, no se introducen estímulos ni se controlan variables; en cambio, se observa la información tal como fue registrada en su fuente original.
+Además, el enfoque retrospectivo permite el análisis de datos recolectados en periodos previos, específicamente entre 1980 y 2020.
+Finalmente, el diseño transeccional se centra en describir el estado del mercado en un corte temporal determinado, utilizando la data disponible para ofrecer una visión clara y completa del contexto analizado.\
 
 \subsection{Población y Fuente de Datos}
 
-De acuerdo con la naturaleza del estudio, no se trabaja con una muestra, sino con la población total de registros contenidos en la fuente seleccionada para evitar sesgos de selección. La fuente primaria de los datos es el dataset "Video Game Sales" de Kaggle, el cual funciona como una fuente secundaria para esta investigación. Este conjunto de datos está compuesto por 16,598 registros de videojuegos, integrando variables cualitativas y cuantitativas de ventas regionales. Cada registro incluye 11 variables clave, tales como: nombre, plataforma, año de lanzamiento, género, editorial y ventas regionales en diferentes áreas (NA, EU, JP, Other y Global).\
+De acuerdo con la naturaleza del estudio, no se trabaja con una muestra, sino con la población total de registros contenidos en la fuente seleccionada para evitar sesgos de selección.
+La fuente primaria de los datos es el dataset "Video Game Sales" de Kaggle, el cual funciona como una fuente secundaria para esta investigación.
+Este conjunto de datos está compuesto por 16,598 registros de videojuegos, integrando variables cualitativas y cuantitativas de ventas regionales.
+Cada registro incluye 11 variables clave, tales como: nombre, plataforma, año de lanzamiento, género, editorial y ventas regionales en diferentes áreas (NA, EU, JP, Other y Global).\
 
 \subsection{Procesamiento, Limpieza y Análisis Exploratoria de Datos}
 
-Para garantizar la integridad y exactitud de los resultados estadísticos, se empleó el lenguaje de programación R y el entorno de desarrollo Rstudio.  El procesamiento inició con una exploración profunda mediante str(), la cual permitió visualizar la estructura interna del objetivo, y la función summary(), utilizada para obtener un resumen estadístico detallado de cada variable, incluyendo mínimos, máximos y cuartiles de las ventas regionales.
-	Posteriormente, se llevó a cabo la gestión de los datos faltantes utilizando la función is.na() para identificar la presencia de valores nulos. Se encontraron 271 registros con datos ausentes en la variable "año" y 58 en la variable "editorial". La localización precisa de estos datos se realizó mediante la función which(is.na()), lo que facilitó la depuración del conjunto de datos al omitir dichos registros, evitando así que afectaran los cálculos de las medidas de tendencia central. Se tomó la decisión metodológica de eliminar las columnas correspondientes a "Year" (año) y "Publisher" (editorial). Esta acción de depuración se fundamenta en que, para los objetivos de este análisis enfocado en la divergencia de consumo por género y plataforma, dichas variables presentaban inconsistencias que podrían introducir ruido estadístico. Así, se optó por trabajar exclusivamente con las dimensiones que presentan mayor integridad en el dataset.
-	Finalmente, se realizó la transformación de las variables cualitativas Genre (Género) y Platform (Plataforma) utilizando la función as.factor(). Esta conversión es fundamental desde el punto de vista estadístico, ya que permite que R reconozca estas columnas como variables categóricas, facilitando así la clasificación, el conteo de frecuencias y la generación de gráficos comparativos necesarios para el análisis de la divergencia cultural en el consumo.\
+Para garantizar la integridad y exactitud de los resultados estadísticos, se empleó el lenguaje de programación R y el entorno de desarrollo Rstudio.
+El procesamiento inició con una exploración profunda mediante str(), la cual permitió visualizar la estructura interna del objetivo, y la función summary(), utilizada para obtener un resumen estadístico detallado de cada variable, incluyendo mínimos, máximos y cuartiles de las ventas regionales.
+Posteriormente, se llevó a cabo la gestión de los datos faltantes utilizando la función is.na() para identificar la presencia de valores nulos.
+Se encontraron 271 registros con datos ausentes en la variable "año" y 58 en la variable "editorial".
+La localización precisa de estos datos se realizó mediante la función which(is.na()), lo que facilitó la depuración del conjunto de datos al omitir dichos registros, evitando así que afectaran los cálculos de las medidas de tendencia central.
+Se tomó la decisión metodológica de eliminar las columnas correspondientes a "Year" (año) y "Publisher" (editorial).
+Esta acción de depuración se fundamenta en que, para los objetivos de este análisis enfocado en la divergencia de consumo por género y plataforma, dichas variables presentaban inconsistencias que podrían introducir ruido estadístico.
+Así, se optó por trabajar exclusivamente con las dimensiones que presentan mayor integridad en el dataset.
+Finalmente, se realizó la transformación de las variables cualitativas Genre (Género) y Platform (Plataforma) utilizando la función as.factor().
+Esta conversión es fundamental desde el punto de vista estadístico, ya que permite que R reconozca estas columnas como variables categóricas, facilitando así la clasificación, el conteo de frecuencias y la generación de gráficos comparativos necesarios para el análisis de la divergencia cultural en el consumo.\
+
 ```{r Vista_de_Datos, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -249,15 +296,21 @@ library(kableExtra)
 # Mostramos los primeros 5 datos y ajustamos al ancho de página
 kable(head(df_clean, 5), format = "latex", booktabs = TRUE) %>%
   kable_styling(latex_options = c("scale_down", "hold_position"))
-``` 
+```
 
 \chapter{Análisis de Resultados}
 
-A continuación se exponen los resultados obtenidos tras la ejecución de la ruta metodológica delineada en el capítulo precedente. Mediante el análisis estadístico descriptivo y el procesamiento exploratorio de los datos en R, se ha logrado caracterizar el comportamiento de las variables fundamentales del estudio. Más allá de una simple evaluación sobre las ventajas y limitaciones de las pruebas estadísticas aplicadas, este apartado se enfoca en interpretar los hallazgos consolidados en nuestro dashboard interactivo. El objetivo central es traducir estas cifras brutas en evidencia concreta que demuestre cómo la identidad geográfica y los ecosistemas de plataformas moldean de manera decisiva el mercado global de videojuegos.
+A continuación se exponen los resultados obtenidos tras la ejecución de la ruta metodológica delineada en el capítulo precedente.
+Mediante el análisis estadístico descriptivo y el procesamiento exploratorio de los datos en R, se ha logrado caracterizar el comportamiento de las variables fundamentales del estudio.
+Más allá de una simple evaluación sobre las ventajas y limitaciones de las pruebas estadísticas aplicadas, este apartado se enfoca en interpretar los hallazgos consolidados en nuestro dashboard interactivo.
+El objetivo central es traducir estas cifras brutas en evidencia concreta que demuestre cómo la identidad geográfica y los ecosistemas de plataformas moldean de manera decisiva el mercado global de videojuegos.
 
 \section{Disparidades Geográficas en el Volumen de Ventas}
 
-Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón. Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers). Desde una perspectiva estadistica, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
+Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón.
+Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers).
+Desde una perspectiva estadistica, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
+
 ```{r Boxplot_Ventas_Regionales, fig.width=10, fig.height=6, warning=FALSE}
 library(tidyverse)
 
@@ -286,12 +339,19 @@ ggplot(df_long, aes(x = Mercado, y = Millones, fill = Mercado)) +
         panel.grid.minor = element_blank(),
         strip.background = element_blank())
 ```
+
 ### Análisis de Concentración
-La visualización confirma que el mercado de videojuegos no sigue una distribución uniforme. La abundancia de **valores atípicos (puntos rojos)** evidencia que el éxito comercial depende de una minoría de títulos de alto impacto. Estadísticamente, esto demuestra una **extrema volatilidad**: mientras la mayoría de los productos tienen un rendimiento moderado, el riesgo financiero se mitiga solo mediante el éxito masivo de unos pocos "blockbusters", especialmente en Norteamérica.
+
+La visualización confirma que el mercado de videojuegos no sigue una distribución uniforme.
+La abundancia de **valores atípicos (puntos rojos)** evidencia que el éxito comercial depende de una minoría de títulos de alto impacto.
+Estadísticamente, esto demuestra una **extrema volatilidad**: mientras la mayoría de los productos tienen un rendimiento moderado, el riesgo financiero se mitiga solo mediante el éxito masivo de unos pocos "blockbusters", especialmente en Norteamérica.
 
 \section{Validación de la Divergencia Cultural por Género}
 
-Al evaluar la asociación entre región y género, se confirmó la existencia de una marcada divergencia cultural. Mientras que los mercados occidentales muestran una preferencia estadística por los géneros de Action y Shooter, el mercado japonés se inclina predominantemente hacia el Role-Playing. La aplicación de la lógica de independencia demuestra que estas preferencias no son casuales, validando que la identidad regional es un factor determinante que desafía la hipótesis de un consumo global estandarizado.\
+Al evaluar la asociación entre región y género, se confirmó la existencia de una marcada divergencia cultural.
+Mientras que los mercados occidentales muestran una preferencia estadística por los géneros de Action y Shooter, el mercado japonés se inclina predominantemente hacia el Role-Playing.
+La aplicación de la lógica de independencia demuestra que estas preferencias no son casuales, validando que la identidad regional es un factor determinante que desafía la hipótesis de un consumo global estandarizado.\
+
 ```{r heatmap-ventas, fig.width=8, fig.height=6, message=FALSE, warning=FALSE}
 library(tidyverse)
 
@@ -317,12 +377,18 @@ ggplot(heatmap_data, aes(x = Region, y = Genre, fill = Ventas)) +
     fill = "Ventas (Millones)"
   )
 ```
+
 ### Análisis de Concentración
-El mapa de calor revela una marcada divergencia geográfica en el consumo: mientras que Norteamérica y Europa presentan una alta densidad de ventas en géneros de acción y deportes, confirmando su papel como mercados líderes en occidente, Japón muestra una preferencia cultural única hacia el género Role-Playing, destacándose claramente sobre el resto de las regiones. Por otro lado, géneros como Strategy y Adventure mantienen una baja intensidad comercial de forma global, lo que demuestra que la identidad regional es un factor determinante que desafía la idea de un mercado de videojuegos totalmente estandarizado.
+
+El mapa de calor revela una marcada divergencia geográfica en el consumo: mientras que Norteamérica y Europa presentan una alta densidad de ventas en géneros de acción y deportes, confirmando su papel como mercados líderes en occidente, Japón muestra una preferencia cultural única hacia el género Role-Playing, destacándose claramente sobre el resto de las regiones.
+Por otro lado, géneros como Strategy y Adventure mantienen una baja intensidad comercial de forma global, lo que demuestra que la identidad regional es un factor determinante que desafía la idea de un mercado de videojuegos totalmente estandarizado.
 
 \section{El Hardware como Catalizador del Éxito Regional}
 
-El análisis de las plataformas reveló que el ecosistema de hardware condiciona la rentabilidad de los géneros. En Japón, la adopción de sistemas portátiles ha potenciado el éxito del género RPG, mientras que en Occidente, las consolas de alta potencia han actuado como catalizadores para géneros de acción y deportes. Estos hallazgos demuestran que la elección de la plataforma es una decisión estratégica que debe alinearse con el perfil tecnológico de cada territorio para mitigar riesgos financieros.\
+El análisis de las plataformas reveló que el ecosistema de hardware condiciona la rentabilidad de los géneros.
+En Japón, la adopción de sistemas portátiles ha potenciado el éxito del género RPG, mientras que en Occidente, las consolas de alta potencia han actuado como catalizadores para géneros de acción y deportes.
+Estos hallazgos demuestran que la elección de la plataforma es una decisión estratégica que debe alinearse con el perfil tecnológico de cada territorio para mitigar riesgos financieros.\
+
 ```{r Grafico_Hardware_Catalizador, fig.width=10, fig.height=7, warning=FALSE}
 library(tidyverse)
 
@@ -357,33 +423,48 @@ ggplot(df_hw_plot, aes(x = reorder(Platform, Ventas), y = Ventas, fill = Genre))
         legend.text = element_text(size = 8),
         plot.title = element_text(face = "bold"))
 ```
+
 ### Impacto del Ecosistema
-El gráfico de especialización valida que el hardware no es un canal neutral, sino un **catalizador de géneros**. Se observa una identidad comercial clara: las plataformas portátiles muestran un dominio del **Role-Playing**, mientras que las consolas de sobremesa se inclinan hacia la **Acción y Deportes**. Esto confirma que la rentabilidad de un género está condicionada por el perfil tecnológico del territorio y la plataforma elegida para su distribución.
+
+El gráfico de especialización valida que el hardware no es un canal neutral, sino un **catalizador de géneros**.
+Se observa una identidad comercial clara: las plataformas portátiles muestran un dominio del **Role-Playing**, mientras que las consolas de sobremesa se inclinan hacia la **Acción y Deportes**.
+Esto confirma que la rentabilidad de un género está condicionada por el perfil tecnológico del territorio y la plataforma elegida para su distribución.
 
 \chapter{Conclusiones y Recomendaciones}
 
-\textbf{Confirmación de la Divergencia Cultural sobre la Convergencia Global-} La investigación permite concluir que, a pesar de la hiperconectividad digital, el mercado de los videojuegos no se comporta como un bloque homogéneo. La evidencia estadística recolectada entre 1980 y 2020 demuestra que las raíces geográficas mantienen un peso determinante en el éxito comercial. Se ha validado que las preferencias de consumo no han convergido hacia un estándar único, sino que se mantienen perfiles de identidad regional irreductibles que deben ser considerados en cualquier modelo predictivo de ventas.
-\textbf{Recomendación} 
-Se sugiere a las empresas desarrolladoras y distribuidoras abandonar el modelo de lanzamiento de "talla única". Es fundamental que la planificación estratégica de marketing y la localización de software se diseñen de forma independiente para cada región, respetando las idiosincrasias detectadas en lugar de intentar forzar una estandarización que eleva el riesgo de fracaso comercial.\
+\textbf{Confirmación de la Divergencia Cultural sobre la Convergencia Global-} La investigación permite concluir que, a pesar de la hiperconectividad digital, el mercado de los videojuegos no se comporta como un bloque homogéneo.
+La evidencia estadística recolectada entre 1980 y 2020 demuestra que las raíces geográficas mantienen un peso determinante en el éxito comercial.
+Se ha validado que las preferencias de consumo no han convergido hacia un estándar único, sino que se mantienen perfiles de identidad regional irreductibles que deben ser considerados en cualquier modelo predictivo de ventas.
+\textbf{Recomendación} Se sugiere a las empresas desarrolladoras y distribuidoras abandonar el modelo de lanzamiento de "talla única".
+Es fundamental que la planificación estratégica de marketing y la localización de software se diseñen de forma independiente para cada región, respetando las idiosincrasias detectadas en lugar de intentar forzar una estandarización que eleva el riesgo de fracaso comercial.\
 
-\textbf{Especialización Regional de Géneros y Rentabilidad} Mediante la aplicación de pruebas de independencia, se concluye que existe una correlación crítica entre el territorio y el género del videojuego. Mientras que el mercado occidental (Norteamérica y Europa) presenta una hegemonía de géneros de acción y disparos (Shooters), el mercado japonés exhibe una preferencia estadística desviada hacia los juegos de rol (Role-Playing). Esta divergencia no es aleatoria y representa la diferencia más significativa en la segmentación del mercado global.\
+\textbf{Especialización Regional de Géneros y Rentabilidad} Mediante la aplicación de pruebas de independencia, se concluye que existe una correlación crítica entre el territorio y el género del videojuego.
+Mientras que el mercado occidental (Norteamérica y Europa) presenta una hegemonía de géneros de acción y disparos (Shooters), el mercado japonés exhibe una preferencia estadística desviada hacia los juegos de rol (Role-Playing).
+Esta divergencia no es aleatoria y representa la diferencia más significativa en la segmentación del mercado global.\
 
-\textbf{Recomendación} 
-Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Python para la implementación de dashboards) para realizar simulaciones de mercado previas al desarrollo de un título. Esto permite a los tomadores de decisiones visualizar escenarios de éxito según el género y el territorio, optimizando la inversión financiera.\
+\textbf{Recomendación} Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Python para la implementación de dashboards) para realizar simulaciones de mercado previas al desarrollo de un título.
+Esto permite a los tomadores de decisiones visualizar escenarios de éxito según el género y el territorio, optimizando la inversión financiera.\
 
-\textbf{El Hardware como Filtro y Catalizador de Éxito} Se determinó que la plataforma de lanzamiento no es una variable neutra, sino un componente del ecosistema que condiciona el triunfo de ciertos géneros. El procesamiento de datos y la generación de gráficos comparativos en el dashboard de Python revelaron que la alta penetración de sistemas portátiles en Japón ha sido el vehículo principal para el dominio de los RPG, mientras que en Occidente, el dominio de consolas de alta potencia ha impulsado los géneros de deportes y acción.\
+\textbf{El Hardware como Filtro y Catalizador de Éxito} Se determinó que la plataforma de lanzamiento no es una variable neutra, sino un componente del ecosistema que condiciona el triunfo de ciertos géneros.
+El procesamiento de datos y la generación de gráficos comparativos en el dashboard de Python revelaron que la alta penetración de sistemas portátiles en Japón ha sido el vehículo principal para el dominio de los RPG, mientras que en Occidente, el dominio de consolas de alta potencia ha impulsado los géneros de deportes y acción.\
 
-\textbf{Recomendación} Es imperativo que las decisiones de exclusividad se basen en el mapa de hardware regional. Se sugiere mantener actualizado el flujo de datos del dashboard para monitorear cómo el cambio generacional de consolas afecta la rentabilidad de los géneros en cada territorio.\
+\textbf{Recomendación} Es imperativo que las decisiones de exclusividad se basen en el mapa de hardware regional.
+Se sugiere mantener actualizado el flujo de datos del dashboard para monitorear cómo el cambio generacional de consolas afecta la rentabilidad de los géneros en cada territorio.\
 
-\textbf{Riesgo estadiatico y Volatilidad del Mercado} Desde una perspectiva estadistica, se concluye que la industria es un entorno de alta volatilidad. El análisis de dispersión realizado revela que una minoría de títulos (outliers) concentra la mayor parte de las ventas. La capacidad de filtrar y explorar estos valores atípicos a través del dashboard desarrollado en Python facilita la identificación de los factores de éxito excepcionales, confirmando que la media de ventas no es un indicador confiable por sí solo.\
+\textbf{Riesgo estadiatico y Volatilidad del Mercado} Desde una perspectiva estadistica, se concluye que la industria es un entorno de alta volatilidad.
+El análisis de dispersión realizado revela que una minoría de títulos (outliers) concentra la mayor parte de las ventas.
+La capacidad de filtrar y explorar estos valores atípicos a través del dashboard desarrollado en Python facilita la identificación de los factores de éxito excepcionales, confirmando que la media de ventas no es un indicador confiable por sí solo.\
 
-\textbf{Recomendación} Se sugiere la implementación de estrategias de diversificación de portafolio. Para mitigar el riesgo de pérdida financiera, las compañías deben utilizar modelos de análisis de datos que permitan distribuir su inversión en una variedad de géneros y plataformas, apoyándose en la visualización constante de las tendencias de consumo.\
+\textbf{Recomendación} Se sugiere la implementación de estrategias de diversificación de portafolio.
+Para mitigar el riesgo de pérdida financiera, las compañías deben utilizar modelos de análisis de datos que permitan distribuir su inversión en una variedad de géneros y plataformas, apoyándose en la visualización constante de las tendencias de consumo.\
 
-\appendix
+\begin{appendix}
 \renewcommand{\thechapter}{\Alph{chapter}}
 
 \chapter{Anexo A:Scripts de Procesamiento y Análisis en R}
-Este anexo detalla la lógica de programación aplicada en el entorno RStudio para el tratamiento de la base de datos y la ejecución de las pruebas estadísticas. El flujo de trabajo se dividió en cuatro fases fundamentales:
+
+Este anexo detalla la lógica de programación aplicada en el entorno RStudio para el tratamiento de la base de datos y la ejecución de las pruebas estadísticas.
+El flujo de trabajo se dividió en cuatro fases fundamentales:
 
 \begin{enumerate}
 \item \textbf{Limpieza de Datos:} Se identificaron valores nulos mediante la función \texttt{is.na()} y se localizaron registros incompletos con \texttt{which()}. Para asegurar la integridad del análisis estadistico, se utilizaron funciones de depuración para omitir registros con datos ausentes en las variables de tiempo y autoría.
@@ -393,7 +474,9 @@ Este anexo detalla la lógica de programación aplicada en el entorno RStudio pa
 \end{enumerate}
 
 \chapter{Anexo B: Arquitectura del Dashboard Interactivo en Python}
-En esta sección se describe la arquitectura técnica de la herramienta de visualización desarrollada en Python, la cual permite la exploración interactiva de los resultados obtenidos. El dashboard se estructuró bajo los siguientes componentes:
+
+En esta sección se describe la arquitectura técnica de la herramienta de visualización desarrollada en Python, la cual permite la exploración interactiva de los resultados obtenidos.
+El dashboard se estructuró bajo los siguientes componentes:
 
 \begin{enumerate}
 \item \textbf{Gestión de Datos:} Uso de la librería \textit{Pandas} para la carga y filtrado eficiente de los 16,598 registros del dataset.
@@ -423,6 +506,7 @@ Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hlin
 \end{table}
 
 \textbf{Detalles de la Fuente:}
+
 \begin{itemize}
     \item \textbf{Repositorio:} Kaggle Data Repository.
     \item \textbf{Volumen:} 16,598 registros de videojuegos únicos.
@@ -430,18 +514,33 @@ Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hlin
 \end{itemize}
 
 \clearpage
+\end{appendix}
 
+\renewcommand{\appendixname}{Bibliografia}
 \renewcommand{\thechapter}{\arabic{chapter}}
 \setcounter{chapter}{5}
-\chapter{Bibliografía}
+\chapter{Bibliografia}
 
-Hosoi, K. (2019). *Cultural Background and Game Consumption: A Cross-National Analysis*. Journal of Game Studies and Economics.
+Hosoi, K.
+(2019).
+*Cultural Background and Game Consumption: A Cross-National Analysis*.
+Journal of Game Studies and Economics.
 \smallskip
 
-Newzoo. (2023). *Global Games Market Report 2023: The Future of the Games Industry*. Newzoo BV.
+Newzoo.
+(2023).
+*Global Games Market Report 2023: The Future of the Games Industry*.
+Newzoo BV.
 \smallskip
 
-Vogel, H. L. (2020). *Entertainment Industry Economics: A Guide for Financial Analysis*. (10th ed.). Cambridge University Press.
+Vogel, H. L.
+(2020).
+*Entertainment Industry Economics: A Guide for Financial Analysis*.
+(10th ed.).
+Cambridge University Press.
 \smallskip
 
-Wickham, H., & Grolemund, G. (2017). *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*. O'Reilly Media.
+Wickham, H., & Grolemund, G.
+(2017).
+*R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*.
+O'Reilly Media.
