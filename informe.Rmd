@@ -202,7 +202,31 @@ Son parámetros estadísticos que reflejan el grado de variabilidad de los datos
 Es una medida que evalúa la dependencia lineal entre dos variables aleatorias cuantitativas. En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dirección de la relación entre el año de lanzamiento de los videojuegos y su volumen de ventas. Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive. Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria. Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing. Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
 
 \chapter{Marco Metódico}
- 
+```{r Cargar y Limpiar Datos, include=FALSE}
+library(tidyverse)
+
+# llamo a la carpeta "dataset" y luego al archivo
+df <- read.csv("dataset/12. Videogame Sales.csv", check.names = FALSE)
+
+df_clean <- df %>%
+  filter(!is.na(Year), 
+         Publisher != "", 
+         Publisher != "N/A",
+         Publisher != "Unknown") %>%
+  mutate(
+    Genre = as.factor(Genre),
+    Platform = as.factor(Platform),
+    Year = as.numeric(as.character(Year))
+  )
+```
+```{r Vista_de_Datos, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+# Mostramos los primeros 5 datos y ajustamos al ancho de página
+kable(head(df_clean, 5), format = "latex", booktabs = TRUE) %>%
+  kable_styling(latex_options = c("scale_down", "hold_position"))
+``` 
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
 El presente capítulo detalla la ruta metodológica seguida para analizar la divergencia cultural en el consumo global de videojuegos. Dado que el estudio se basa en un conjunto de datos preexistente, el enfoque se centra en el tratamiento estadístico y descriptivo de la información bibliográfica y digital.\
@@ -224,24 +248,6 @@ De acuerdo con la naturaleza del estudio, no se trabaja con una muestra, sino co
 Para garantizar la integridad y exactitud de los resultados estadísticos, se empleó el lenguaje de programación R y el entorno de desarrollo Rstudio.  El procesamiento inició con una exploración profunda mediante str(), la cual permitió visualizar la estructura interna del objetivo, y la función summary(), utilizada para obtener un resumen estadístico detallado de cada variable, incluyendo mínimos, máximos y cuartiles de las ventas regionales.
 	Posteriormente, se llevó a cabo la gestión de los datos faltantes utilizando la función is.na() para identificar la presencia de valores nulos. Se encontraron 271 registros con datos ausentes en la variable "año" y 58 en la variable "editorial". La localización precisa de estos datos se realizó mediante la función which(is.na()), lo que facilitó la depuración del conjunto de datos al omitir dichos registros, evitando así que afectaran los cálculos de las medidas de tendencia central. Se tomó la decisión metodológica de eliminar las columnas correspondientes a "Year" (año) y "Publisher" (editorial). Esta acción de depuración se fundamenta en que, para los objetivos de este análisis enfocado en la divergencia de consumo por género y plataforma, dichas variables presentaban inconsistencias que podrían introducir ruido estadístico. Así, se optó por trabajar exclusivamente con las dimensiones que presentan mayor integridad en el dataset.
 	Finalmente, se realizó la transformación de las variables cualitativas Genre (Género) y Platform (Plataforma) utilizando la función as.factor(). Esta conversión es fundamental desde el punto de vista estadístico, ya que permite que R reconozca estas columnas como variables categóricas, facilitando así la clasificación, el conteo de frecuencias y la generación de gráficos comparativos necesarios para el análisis de la divergencia cultural en el consumo.\
-	
-```{r Cargar y Limpiar Datos, include=FALSE}
-library(tidyverse)
-
-# llamo a la carpeta "dataset" y luego al archivo
-df <- read.csv("dataset/12. Videogame Sales.csv", check.names = FALSE)
-
-df_clean <- df %>%
-  filter(!is.na(Year), 
-         Publisher != "", 
-         Publisher != "N/A",
-         Publisher != "Unknown") %>%
-  mutate(
-    Genre = as.factor(Genre),
-    Platform = as.factor(Platform),
-    Year = as.numeric(as.character(Year))
-  )
-```
 
 \chapter{Análisis de Resultados}
 
