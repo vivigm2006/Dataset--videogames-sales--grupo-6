@@ -61,7 +61,7 @@ library(scales)
 
 \chapter*{Introducción}
 
-El crecimiento exponencial de la industria de los videojuegos en las últimas décadas la ha consolidado no solo como un fenómeno cultural, sino como uno de los pilares fundamentales de la economía digital global, superando en ingresos combinados a las industrias del cine y la música. No obstante, desde una perspectiva actuarial y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra intrínsecamente ligado a determinantes geográficos, idiosincrasias culturales y dinámicas de mercado altamente heterogéneas.
+El crecimiento exponencial de la industria de los videojuegos en las últimas décadas la ha consolidado no solo como un fenómeno cultural, sino como uno de los pilares fundamentales de la economía digital global, superando en ingresos combinados a las industrias del cine y la música. No obstante, desde una perspectiva estadistica y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra intrínsecamente ligado a determinantes geográficos, idiosincrasias culturales y dinámicas de mercado altamente heterogéneas.
 
 El presente informe estadístico tiene como propósito fundamental analizar y modelar el comportamiento de las ventas globales de videojuegos, centrando el estudio en las disparidades de consumo observadas en las tres regiones de mayor impacto histórico. La investigación se fundamenta en la premisa de que las preferencias de género no son universales, sino que responden a patrones de identidad regional que pueden ser cuantificados y validados estadísticamente.
 
@@ -228,7 +228,7 @@ Para garantizar la integridad y exactitud de los resultados estadísticos, se em
 ```{r Cargar y Limpiar Datos, include=FALSE}
 library(tidyverse)
 
-# Accedemos a la carpeta "dataset" y luego al archivo
+# llamo a la carpeta "dataset" y luego al archivo
 df <- read.csv("dataset/12. Videogame Sales.csv", check.names = FALSE)
 
 df_clean <- df %>%
@@ -249,7 +249,7 @@ df_clean <- df %>%
 
 \section{Disparidades Geográficas en el Volumen de Ventas}
 
-Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón. Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers). Desde una perspectiva actuarial, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
+Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón. Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers). Desde una perspectiva estadistica, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
 
 \section{Validación de la Divergencia Cultural por Género}
 
@@ -274,7 +274,7 @@ Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Py
 
 \textbf{Recomendación} Es imperativo que las decisiones de exclusividad se basen en el mapa de hardware regional. Se sugiere mantener actualizado el flujo de datos del dashboard para monitorear cómo el cambio generacional de consolas afecta la rentabilidad de los géneros en cada territorio.\
 
-\textbf{Riesgo Actuarial y Volatilidad del Mercado} Desde una perspectiva actuarial, se concluye que la industria es un entorno de alta volatilidad. El análisis de dispersión realizado revela que una minoría de títulos (outliers) concentra la mayor parte de las ventas. La capacidad de filtrar y explorar estos valores atípicos a través del dashboard desarrollado en Python facilita la identificación de los factores de éxito excepcionales, confirmando que la media de ventas no es un indicador confiable por sí solo.\
+\textbf{Riesgo estadiatico y Volatilidad del Mercado} Desde una perspectiva estadistica, se concluye que la industria es un entorno de alta volatilidad. El análisis de dispersión realizado revela que una minoría de títulos (outliers) concentra la mayor parte de las ventas. La capacidad de filtrar y explorar estos valores atípicos a través del dashboard desarrollado en Python facilita la identificación de los factores de éxito excepcionales, confirmando que la media de ventas no es un indicador confiable por sí solo.\
 
 \textbf{Recomendación} Se sugiere la implementación de estrategias de diversificación de portafolio. Para mitigar el riesgo de pérdida financiera, las compañías deben utilizar modelos de análisis de datos que permitan distribuir su inversión en una variedad de géneros y plataformas, apoyándose en la visualización constante de las tendencias de consumo.\
 
@@ -285,7 +285,7 @@ Se recomienda el uso de ecosistemas híbridos (R para el rigor estadístico y Py
 Este anexo detalla la lógica de programación aplicada en el entorno RStudio para el tratamiento de la base de datos y la ejecución de las pruebas estadísticas. El flujo de trabajo se dividió en cuatro fases fundamentales:
 
 \begin{enumerate}
-\item \textbf{Limpieza de Datos:} Se identificaron valores nulos mediante la función \texttt{is.na()} y se localizaron registros incompletos con \texttt{which()}. Para asegurar la integridad del análisis actuarial, se utilizaron funciones de depuración para omitir registros con datos ausentes en las variables de tiempo y autoría.
+\item \textbf{Limpieza de Datos:} Se identificaron valores nulos mediante la función \texttt{is.na()} y se localizaron registros incompletos con \texttt{which()}. Para asegurar la integridad del análisis estadistico, se utilizaron funciones de depuración para omitir registros con datos ausentes en las variables de tiempo y autoría.
 \item \textbf{Transformación de Variables:} Las variables cualitativas como \textit{Genre} y \textit{Platform} fueron convertidas en factores utilizando \texttt{as.factor()}, permitiendo su tratamiento como variables categóricas para el cálculo de frecuencias y segmentación geográfica.
 \item \textbf{Análisis Descriptivo:} Se emplearon las funciones \texttt{summary()} y \texttt{aggregate()} para calcular las medidas de tendencia central y dispersión (media, mediana y desviación estándar) de las ventas en cada región (NA, EU, JP).
 \item \textbf{Prueba de Independencia:} Se ejecutó el test de Chi-cuadrado de Pearson (\texttt{chisq.test()}) para evaluar la asociación entre el género del videojuego y la región de consumo, fundamentando estadísticamente la tesis de la divergencia cultural.
