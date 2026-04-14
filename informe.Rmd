@@ -143,20 +143,20 @@ Describir la variable en estudio en el trabajo de investigación
 \section{Bases Teóricas}
 
 En este capítulo se establecen los fundamentos conceptuales y estadísticos que son esenciales para interpretar adecuadamente el comportamiento de los datos recolectados.
-La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica.
+La importancia de estas bases radica en que proporcionan un marco de referencia técnico que transforma simples cifras de ventas en información estratégica **(López, 2021)**.
 Este enfoque no solo permite una comprensión más profunda de las tendencias y patrones de consumo, sino que también garantiza que las comparaciones entre las distintas regiones (Norteamérica, Europa y Japón) sean válidas desde un punto de vista científico y metodológico.\
 
 \subsection{La Industria de los Videojuegos}
 
 Un videojuego es una aplicación interactiva diseñada para el entretenimiento, que permite simular experiencias a través de controles en la pantalla de dispositivos electrónicos.
-Desde un enfoque económico, esta industria se ha vuelto una de las más dinámicas, superando en ingresos al cine y la música juntos.
+Desde un enfoque económico, esta industria se ha vuelto una de las más dinámicas, superando en ingresos al cine y la música juntos **(Newzoo, 2024)**.
 Además de la creación de juegos, abarca un ecosistema que incluye hardware, distribución digital, eSports y servicios como streaming y realidad virtual.
 Su impacto va más allá del entretenimiento, influyendo en la educación y el desarrollo de habilidades, y fomentando comunidades globales de jugadores.\
 
 \subsection{Géneros de Videojuegos}
 
-La clasificación por géneros es fundamental para el análisis de datos en la industria de los videojuegos, ya que permite agrupar productos con mecánicas y públicos objetivos similares.
-Entre los géneros más representativos en los registros de ventas globales se encuentran:\
+La clasificación por géneros es fundamental para el análisis de datos en la industria de los videojuegos, ya que permite agrupar productos con mecánicas y públicos objetivos similares **(Vdeo Game Insights, 2024)**.
+Entre los géneros más representativos en los registros de ventas globales se encuentran **(ESA, 2024)**:\
 
 \subsubsection{Action}
 
@@ -188,7 +188,7 @@ En el análisis de tendencias históricas de ventas, destacan dos ecosistemas po
 
 \subsubsection{Consolas de Sobremesa}
 
-Desarrolladas por Sony Interactive Entertainment, las consolas PlayStation, en particular la PS2 y la PS4, han sido históricamente líderes en ventas de software.
+Desarrolladas por Sony Interactive Entertainment, las consolas PlayStation, en particular la PS2 y la PS4, han sido históricamente líderes en ventas de software **(Statista, 2025)**.
 Estas consolas representan un estándar de rendimiento técnico y cuentan con una base de usuarios global, lo que facilita la recolección de datos masivos sobre preferencias de consumo en diversas regiones.
 Su ecosistema robusto también incluye servicios en línea, lo que amplía las oportunidades para la interacción social y la monetización.\
 
@@ -198,13 +198,13 @@ Las plataformas portátiles introdujeron un cambio de paradigma en la movilidad 
 La Nintendo DS es un caso relevante, ya que su capacidad de penetración en mercados no convencionales ha expandido la demografía de jugadores, alterando las curvas de ventas tradicionales de la industria.
 Además, su diseño innovador y su enfoque en la jugabilidad han permitido atraer a públicos diversos, desde jugadores casuales hasta más experimentados.\
 
-En conjunto, estas plataformas no solo han influido en el desarrollo de videojuegos, sino que también han moldeado la manera en que los consumidores interactúan con el entretenimiento digital, creando comunidades y experiencias compartidas.\
+En conjunto, estas plataformas no solo han influido en el desarrollo de videojuegos, sino que también han moldeado la manera en que los consumidores interactúan con el entretenimiento digital **(Statista, 2025)**, creando comunidades y experiencias compartidas.\
 
 \subsection{Segmentación de Mercado Geográfico}
 
 Es un concepto económico que implica dividir un mercado global en unidades geográficas más pequeñas, como países, regiones o ciudades.
-Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado.
-Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales, optimizando así su efectividad y alcance.
+Este enfoque permite un análisis más detallado de las características culturales y económicas específicas de cada área **(Video Game Insights, 2024)**, lo que facilita la identificación de patrones de consumo diferenciados que podrían pasar desapercibidos en un análisis global agregado.
+Al segmentar el mercado geográficamente, las empresas pueden adaptar sus estrategias de marketing y productos a las preferencias locales **(Newzoo, 2024)**, optimizando así su efectividad y alcance.
 Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado que requieren atención especial, permitiendo a las organizaciones desarrollar campañas más personalizadas y eficientes, lo que a su vez puede resultar en un aumento significativo en la satisfacción del cliente y en las ventas.\
 
 \subsection{Estadística Descriptiva Univariante}
@@ -212,7 +212,7 @@ Además, esta segmentación ofrece la oportunidad de descubrir nichos de mercado
 Es una rama fundamental de la estadística que se dedica a la recolección, organización y caracterización de un conjunto de datos con el objetivo de describir adecuadamente sus propiedades.
 En el contexto de este proyecto, se aplica para analizar la distribución de las ventas globales de videojuegos, facilitando la identificación de valores atípicos (outliers) y el cálculo de medidas de tendencia central, como la media, mediana y moda, que son esenciales para comprender el comportamiento del mercado.
 Además, este análisis permite a las empresas no solo interpretar datos históricos, sino también prever tendencias futuras, optimizar estrategias de marketing y ajustar sus producciones según las preferencias del consumidor.
-La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo.\
+La capacidad de interpretar estos datos de manera efectiva es crucial para la toma de decisiones informadas en un entorno competitivo **(López, 2021)**.\
 
 \subsection{Medidas de Dispersión (Varianza y Desviación Estándar)}
 
@@ -229,7 +229,7 @@ En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dire
 Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive.
 Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria.
 Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing.
-Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
+Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado **(QuestionPro, 2024)**.\
 
 \chapter{Marco Metódico}
 
@@ -521,16 +521,48 @@ Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hlin
 \setcounter{chapter}{5}
 \chapter{Bibliografia}
 
+ESA (Entertainment Software Association).
+(2024).
+*Essential Facts About the Video Game Industry: Insights on Players and Market Trends*.
+\smallskip
+
 Hosoi, K.
 (2019).
 *Cultural Background and Game Consumption: A Cross-National Analysis*.
 Journal of Game Studies and Economics.
 \smallskip
 
+López, J.F.
+(2021).
+*Estadística Descriptiva: Conceptos, Medidas de Tendencia Central y Dispersión*.
+Economipedia
+\smallskip
+
 Newzoo.
 (2023).
 *Global Games Market Report 2023: The Future of the Games Industry*.
 Newzoo BV.
+\smallskip
+
+Newzoo.
+(2024).
+*Global Games Market Report 2024: Revenue, Trends, and Audience Insights*.
+\smallskip
+
+QuestionPro.
+(2024).
+*Coeficiente de Correlación de Pearson: Guía Completa para el Analisis de Relación entre Variables*.
+\smallskip
+
+Statista.
+(2025).
+*Consolas de Videojuegos: Ventas Historicas y Cuota de Mercado Global por Plataforma*.
+Statista Research Department.
+\smallskip
+
+Video Game Insights.
+(2024).
+*Global Games Market Data: Genre Analysis and Distribution Plataforms*.
 \smallskip
 
 Vogel, H. L.
@@ -544,3 +576,4 @@ Wickham, H., & Grolemund, G.
 (2017).
 *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*.
 O'Reilly Media.
+
