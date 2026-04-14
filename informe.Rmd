@@ -402,3 +402,16 @@ Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hlin
     \item \textbf{Cobertura Temporal:} Registros históricos que abarcan desde el año 1980 hasta 2020, permitiendo un análisis retrospectivo de la industria.
 \end{itemize}
 
+\clearpage
+# Bibliografía {-}
+
+Hosoi, K. (2019). *Cultural Background and Game Consumption: A Cross-National Analysis*. Journal of Game Studies and Economics.
+\smallskip
+
+Newzoo. (2023). *Global Games Market Report 2023: The Future of the Games Industry*. Newzoo BV.
+\smallskip
+
+Vogel, H. L. (2020). *Entertainment Industry Economics: A Guide for Financial Analysis*. (10th ed.). Cambridge University Press.
+\smallskip
+
+Wickham, H., & Grolemund, G. (2017). *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*. O'Reilly Media.
