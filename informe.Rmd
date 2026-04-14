@@ -289,6 +289,7 @@ Así, se optó por trabajar exclusivamente con las dimensiones que presentan may
 Finalmente, se realizó la transformación de las variables cualitativas Genre (Género) y Platform (Plataforma) utilizando la función as.factor().
 Esta conversión es fundamental desde el punto de vista estadístico, ya que permite que R reconozca estas columnas como variables categóricas, facilitando así la clasificación, el conteo de frecuencias y la generación de gráficos comparativos necesarios para el análisis de la divergencia cultural en el consumo.\
 
+\subsubsection{Vista Previa del Dataset}
 ```{r Vista_de_Datos, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
