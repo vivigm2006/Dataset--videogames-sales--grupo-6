@@ -378,7 +378,7 @@ ggplot(heatmap_data, aes(x = Region, y = Genre, fill = Ventas)) +
   )
 ```
 
-### Análisis de Concentración
+### Análisis de Distribución
 
 El mapa de calor revela una marcada divergencia geográfica en el consumo: mientras que Norteamérica y Europa presentan una alta densidad de ventas en géneros de acción y deportes, confirmando su papel como mercados líderes en occidente, Japón muestra una preferencia cultural única hacia el género Role-Playing, destacándose claramente sobre el resto de las regiones.
 Por otro lado, géneros como Strategy y Adventure mantienen una baja intensidad comercial de forma global, lo que demuestra que la identidad regional es un factor determinante que desafía la idea de un mercado de videojuegos totalmente estandarizado.
