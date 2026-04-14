@@ -1,4 +1,4 @@
-# Análisis de la divergencia cultural en el consumo global de videojuegos 
+# Análisis Estadístico de la Divergencia Cultural en el Consumo Global de Videojuegos. 
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
 
 > Proyecto final para la materia **Computación 1** de la Escuela de Estadística y Ciencias Actuariales (UCV).
