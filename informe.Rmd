@@ -250,6 +250,34 @@ df_clean <- df %>%
 \section{Disparidades Geográficas en el Volumen de Ventas}
 
 Mediante el análisis descriptivo en R, se cuantificó el volumen de ventas en Norteamérica, Europa y Japón. Los resultados muestran que, aunque Norteamérica lidera en consumo total, la distribución es asimétrica y presenta una alta concentración en títulos específicos (outliers). Desde una perspectiva estadistica, esto indica que el éxito comercial no es uniforme, sino que depende de una minoría de productos de alto impacto, lo que subraya la volatilidad y el riesgo inherente al mercado global.\
+```{r Boxplot_Ventas_Regionales, fig.width=10, fig.height=6, warning=FALSE}
+library(tidyverse)
+
+df_long <- df_clean %>%
+  select(Name, NA_Sales, EU_Sales, JP_Sales) %>%
+  pivot_longer(
+    cols = c(NA_Sales, EU_Sales, JP_Sales), 
+    names_to = "Mercado", 
+    values_to = "Millones"
+  ) %>%
+  mutate(Mercado = factor(Mercado, 
+                         levels = c("NA_Sales", "EU_Sales", "JP_Sales"),
+                         labels = c("Norteamérica", "Europa", "Japón"))) %>%
+  filter(Millones > 0.01)
+
+ggplot(df_long, aes(x = Mercado, y = Millones, fill = Mercado)) +
+  geom_boxplot(outlier.color = "red", outlier.alpha = 0.5, size = 0.6) +
+  scale_y_log10(labels = scales::comma) +
+  labs(title = "Distribución de Ventas por Región",
+       subtitle = "Escala logarítmica para visualización de outliers",
+       x = NULL, 
+       y = "Ventas en Millones (log10)") +
+  scale_fill_manual(values = c("#2c7bb6", "#abd9e9", "#fdae61")) +
+  theme_bw() +
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank(),
+        strip.background = element_blank())
+```
 
 \section{Validación de la Divergencia Cultural por Género}
 
@@ -258,6 +286,40 @@ Al evaluar la asociación entre región y género, se confirmó la existencia de
 \section{El Hardware como Catalizador del Éxito Regional}
 
 El análisis de las plataformas reveló que el ecosistema de hardware condiciona la rentabilidad de los géneros. En Japón, la adopción de sistemas portátiles ha potenciado el éxito del género RPG, mientras que en Occidente, las consolas de alta potencia han actuado como catalizadores para géneros de acción y deportes. Estos hallazgos demuestran que la elección de la plataforma es una decisión estratégica que debe alinearse con el perfil tecnológico de cada territorio para mitigar riesgos financieros.\
+```{r Grafico_Hardware_Catalizador, fig.width=10, fig.height=7, warning=FALSE}
+library(tidyverse)
+
+paleta_plotly <- c("#636EFA", "#EF553B", "#00CC96", "#AB63FA", "#FFA15A", 
+                  "#19D3F3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52",
+                  "#0d0887", "#46039f")
+
+top_plats <- df_clean %>%
+  group_by(Platform) %>%
+  summarize(v_total = sum(Global_Sales)) %>%
+  slice_max(v_total, n = 12) %>%
+  pull(Platform)
+
+df_hw_plot <- df_clean %>%
+  filter(Platform %in% top_plats) %>%
+  group_by(Platform, Genre) %>%
+  summarize(Ventas = sum(Global_Sales), .groups = 'drop')
+
+ggplot(df_hw_plot, aes(x = reorder(Platform, Ventas), y = Ventas, fill = Genre)) +
+  geom_bar(position = "fill", stat = "identity", color = "white", size = 0.1) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = paleta_plotly) +
+  labs(title = "Especialización Comercial por Plataforma",
+       subtitle = "Composición porcentual de géneros según el ecosistema de hardware",
+       x = "Plataforma",
+       y = "Porcentaje de Ventas",
+       fill = "Género") +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        panel.grid.major.y = element_blank(),
+        legend.text = element_text(size = 8),
+        plot.title = element_text(face = "bold"))
+```
 
 \chapter{Conclusiones y Recomendaciones}
 
