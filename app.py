@@ -69,12 +69,16 @@ dict_regiones = {
 }
 reg_tech = dict_regiones[region_sel]
 
+#por si no hay generos selccionados se muestra la data 
+if not generos:
+    df_filtrado = df_base.copy()
+    st.sidebar.warning("⚠️ No hay géneros selccionados, se muestran todos.")
+else:
 #un filtrado dinámico donde se crea un nuevo dataframe
-df_filtrado = df_base[df_base["Genre"].isin(generos)]
+    df_filtrado = df_base[df_base["Genre"].isin(generos)]
 
-#titulo y subtitulo en la pagina
-st.title("📊 Análisis de Divergencia Cultural en Videojuegos")
-st.markdown("### Estudio estadístico sobre la variabilidad del consumo de videojuegos en los mercados regionales y en el mercado global")
+#titulo en la pagina
+st.title("📊 Análisis Estadístico de la Divergencia Cultural en el Consumo Global de Videojuegos")
 st.divider()
 
 #orden por columnas para mostrar un resumen estadístico sobre los datos filtrados
