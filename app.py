@@ -79,7 +79,6 @@ else:
 
 #titulo en la pagina
 st.title("📊 Análisis Estadístico de la Divergencia Cultural en el Consumo Global de Videojuegos")
-st.divider()
 
 #orden por columnas para mostrar un resumen estadístico sobre los datos filtrados
 col1, col2 = st.columns(2)
@@ -167,9 +166,6 @@ with tab2:
 **Si la caja es grande**: Significa que hay mucha diferencia entre los juegos. Algunos venden poco y otros muchísimo, siendo un mercado más variado.
 """)
 
-#espacio entre las graficas
-    st.divider()
-
     st.header("2. Composición Relativa del Mercado")
     
 #dataframe que vuelve las ventas a porcentajes
@@ -228,9 +224,6 @@ with tab3:
         st.plotly_chart(fig_piramide, use_container_width=True)
         st.info("**Análisis de Magnitud**: La pirámide muestra el volumen de ventas acumulado. Es la métrica directa de éxito comercial en la región.")
 
-#espacio entre las graficas
-        st.divider()
-
 #grafico de barras aplidadas, enfacada en el porcentaje
         st.write("### Especialización (Porcentual)")
 #preparacion de datos
@@ -270,7 +263,7 @@ with tab5:
     st.header("5. Éxitos Regionales vs Fracasos Globales")
 
     if region_sel == "Ventas Globales":
-        st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales.")
+        st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales")
     else:
 #seleccionamos juegos con ventas representativas (>0.3M)
         threshold = 0.3 
