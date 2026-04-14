@@ -100,7 +100,7 @@ regional persiste en como una variable significativa, en los modelos predictivos
 \subsection{Objetivos Específicos}
 \begin{itemize}
   \item{Cuantificar y comparar mediante el uso de R el volumen de ventas por género en cada territorio, identificando las categorías dominantes en cada cultura.}
-  \item{Aplicar pruebas estadísticas para medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.}
+  \item{Medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.}
  \item{Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.} 
 \item{Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.} 
   
@@ -200,10 +200,6 @@ Son parámetros estadísticos que reflejan el grado de variabilidad de los datos
 \subsection{Correlación de Pearson}
 
 Es una medida que evalúa la dependencia lineal entre dos variables aleatorias cuantitativas. En el contexto de nuestro análisis, se emplea para cuantificar la fuerza y dirección de la relación entre el año de lanzamiento de los videojuegos y su volumen de ventas. Esta correlación permite inferir el estado del mercado de videojuegos, identificando si se encuentra en una fase de expansión, saturación o declive. Un coeficiente de correlación positivo indicaría que a medida que pasan los años, las ventas tienden a aumentar, sugiriendo un crecimiento continuo en la industria. Por otro lado, un coeficiente negativo podría señalar un posible estancamiento o disminución en las ventas, lo que podría llevar a las empresas a reconsiderar sus estrategias de lanzamiento y marketing. Además, entender esta relación es esencial para prever tendencias futuras y adaptar las decisiones empresariales a las dinámicas del mercado.\
-
-\subsection{Prueba de Independencia Chi-cuadrado de Pearson}
-
-Es una prueba estadística de hipótesis que se utiliza para determinar si existe una asociación significativa entre dos variables categóricas, ya sean nominales u ordinales. En el contexto de esta investigación, esta prueba es esencial para validar la tesis de la Divergencia Cultural, ya que permite evaluar si la preferencia por un género de videojuego (variable A) es independiente de la región geográfica de consumo (variable B). La relevancia de esta base teórica radica en el cálculo de las "frecuencias esperadas" (lo que se anticiparía en un mercado globalizado y uniforme) en comparación con las "frecuencias observadas" (lo que realmente se registra en los datos de ventas). Si la discrepancia entre ambas es considerable, se puede concluir con un rigor estadístico que los factores culturales de cada región influyen de manera significativa en el éxito comercial de los diferentes géneros, desafiando así la noción de un mercado global homogéneo. Esta comprensión permite a las empresas adaptar sus estrategias de marketing y desarrollo de productos a las particularidades culturales, maximizando su impacto en cada mercado específico.\
 
 \chapter{Marco Metódico}
  
