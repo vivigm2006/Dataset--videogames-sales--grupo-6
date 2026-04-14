@@ -225,7 +225,7 @@ with tab3:
         st.info("**Análisis de Magnitud**: La pirámide muestra el volumen de ventas acumulado. Es la métrica directa de éxito comercial en la región.")
 
 #grafico de barras aplidadas, enfacada en el porcentaje
-        st.write("### Especialización (Porcentual)")
+        st.write("### Especialización")
 #preparacion de datos
         df_stack = df_filtrado.groupby(['Platform', 'Genre'])[reg_tech].sum().reset_index()
         top_10_plats = df_plat_vol['Platform'].tolist()
@@ -243,7 +243,7 @@ with tab3:
 #la normalización al 100%
         fig_stack.update_layout(barmode='stack', barnorm='percent') 
         fig_stack.update_layout(xaxis_ticksuffix="%", showlegend=True)
-        fig_stack.update_xaxes(title="Porcentaje de las ventas")
+        fig_stack.update_xaxes(title="Porcentaje de las Ventas")
     
         st.plotly_chart(fig_stack, use_container_width=True)
         st.info("**Interpretación**: Se compara la identidad comercial de cada consola. Si una barra tiene un color predominante, significa que esa plataforma se especializa en ese género.")
@@ -263,7 +263,7 @@ with tab5:
     st.header("5. Éxitos Regionales vs Fracasos Globales")
 
     if region_sel == "Ventas Globales":
-        st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales")
+        st.warning("⚠️ El análisis de regionalismo no aplica para Ventas Globales. Por favor selcciona alguna región")
     else:
 #seleccionamos juegos con ventas representativas (>0.3M)
         threshold = 0.3 
