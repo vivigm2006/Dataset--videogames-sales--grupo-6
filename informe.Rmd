@@ -253,7 +253,7 @@ kable(head(df_clean, 5), format = "latex", booktabs = TRUE) %>%
 
 \chapter{Análisis de Resultados}
 
-{\small A continuación se exponen los resultados obtenidos tras la ejecución de la ruta metodológica delineada en el capítulo precedente. Mediante el análisis estadístico descriptivo y el procesamiento exploratorio de los datos en R, se ha logrado caracterizar el comportamiento de las variables fundamentales del estudio. Más allá de una simple evaluación sobre las ventajas y limitaciones de las pruebas estadísticas aplicadas, este apartado se enfoca en interpretar los hallazgos consolidados en nuestro dashboard interactivo. El objetivo central es traducir estas cifras brutas en evidencia concreta que demuestre cómo la identidad geográfica y los ecosistemas de plataformas moldean de manera decisiva el mercado global de videojuegos.}
+A continuación se exponen los resultados obtenidos tras la ejecución de la ruta metodológica delineada en el capítulo precedente. Mediante el análisis estadístico descriptivo y el procesamiento exploratorio de los datos en R, se ha logrado caracterizar el comportamiento de las variables fundamentales del estudio. Más allá de una simple evaluación sobre las ventajas y limitaciones de las pruebas estadísticas aplicadas, este apartado se enfoca en interpretar los hallazgos consolidados en nuestro dashboard interactivo. El objetivo central es traducir estas cifras brutas en evidencia concreta que demuestre cómo la identidad geográfica y los ecosistemas de plataformas moldean de manera decisiva el mercado global de videojuegos.
 
 \section{Disparidades Geográficas en el Volumen de Ventas}
 
@@ -307,7 +307,7 @@ heatmap_data <- df_clean %>%
 
 ggplot(heatmap_data, aes(x = Region, y = Genre, fill = Ventas)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "#0d0887", "#19D3F3") + 
+  scale_fill_gradient(low = "#00CC96", "#B6E880") + 
   theme_minimal() +
   labs(
     title = "Preferencia de Géneros por Región",
@@ -430,7 +430,10 @@ Global\_Sales & Cuantitativa Continua & Suma total de ventas mundiales. \\ \hlin
 \end{itemize}
 
 \clearpage
-# Bibliografía {-}
+
+\renewcommand{\thechapter}{\arabic{chapter}}
+\setcounter{chapter}{5}
+\chapter{Bibliografía}
 
 Hosoi, K. (2019). *Cultural Background and Game Consumption: A Cross-National Analysis*. Journal of Game Studies and Economics.
 \smallskip
