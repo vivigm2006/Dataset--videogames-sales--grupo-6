@@ -16,5 +16,5 @@ Analizar estadísticamente la relación entre la región geográfica y el éxito
 * 🧪 Medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.
 * 🚀 Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.
 * 🕵️ Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.
-* Informe Dinamico con Rmarkdown:
+* Informe Dinamico con Rmarkdown: https://github.com/vivigm2006/Dataset--videogames-sales--grupo-6/blob/e1052c28407ac0f3516c7cf80600226083e0ccd7/informe.pdf
 * Pagina Web con Streamlit: https://dashboard-videojuegos-fkrd.onrender.com/
