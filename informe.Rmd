@@ -23,7 +23,7 @@ output:
     number_sections: true
     citation_package: natbib       # Importante: forzar natbib porque tu plantilla lo usa
 abstract: |
-  Hoy en día, los videojuegos no son solo entretenimiento; se han convertido en un motor económico que factura más que el cine y la música juntos. Pero, ¿realmente todos jugamos lo mismo en un mundo hiperconectado? Esta investigación analiza si el éxito de un título es pura suerte o si, estadísticamente, depende de dónde vivas.
+  Hoy en día, los videojuegos no son solo entretenimiento; se han convertido en un motor económico que factura más que el cine y la música juntos. Pero, ¿realmente todos jugamos lo mismo en un mundo tan conectado? Esta investigación analiza si el éxito de un título es pura suerte o si, estadísticamente, depende de dónde sea publicado.
   
   En conclusión, este trabajo demuestra que la identidad cultural sigue pesando más que la tendencia global. Para quienes nos dedicamos a la estadística y las ciencias actuariales, entender estos patrones no es solo una curiosidad, sino una herramienta vital para predecir riesgos y tomar decisiones financieras inteligentes en una industria que no para de crecer.
   A través de un análisis de más de 16,000 registros procesados en R, el estudio revela que la "globalización" del consumo es, en parte, un mito. Mientras que en Norteamérica y Europa nos apasionan los juegos de disparos y acción, en Japón el trono le pertenece indiscutiblemente a los juegos de rol (RPG). Además, descubrimos que la consola que elijas no es un dato menor: el hardware actúa como un portero que decide qué géneros triunfan en cada región.
@@ -54,25 +54,25 @@ library(scales)
 \chapter*{Introducción}
 
 El crecimiento exponencial de la industria de los videojuegos en las últimas décadas la ha consolidado no solo como un fenómeno cultural, sino como uno de los pilares fundamentales de la economía digital global, superando en ingresos combinados a las industrias del cine y la música **(Newzoo, 2023)**.
-No obstante, desde una perspectiva estadística y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra intrínsecamente ligado a determinantes geográficos, idiosincrasias culturales y dinámicas de mercado altamente heterogéneas **(Hosoi, 2019)**.
+No obstante, desde una perspectiva estadística y de ciencia de datos, el éxito comercial de un título no es un fenómeno aleatorio ni uniforme; por el contrario, se encuentra ligado a determinantes geográficos, particularidades culturales y dinámicas de mercado altamente diferentes **(Hosoi, 2019)**.
 
 El presente informe estadístico tiene como propósito fundamental analizar y modelar el comportamiento de las ventas globales de videojuegos, centrando el estudio en las disparidades de consumo observadas en las tres regiones de mayor impacto histórico.
 La investigación se fundamenta en la premisa de que las preferencias de género no son universales, sino que responden a patrones de identidad regional que pueden ser cuantificados y validados estadísticamente **(Vogel, 2020)**.
 
-Mediante el uso de herramientas de estadística descriptiva avanzada y técnicas de visualización de datos, este estudio no solo identifica tendencias históricas de ventas desde 1980 hasta la actualidad, sino que establece un marco metodológico para el desarrollo de modelos predictivos de riesgo y éxito comercial **(Wickham & Grolemund, 2017)**.
-De este modo, se busca proporcionar una visión integral que permita comprender las complejidades de un mercado global que, a pesar de la digitalización, se mantiene firmemente anclado a sus raíces geográficas.
+Mediante el uso de herramientas de estadística descriptiva y técnicas de visualización de datos, este estudio no solo identifica tendencias históricas de ventas desde 1980 hasta la actualidad, sino que establece un marco metodológico para el desarrollo de modelos predictivos de riesgo y éxito comercial **(Wickham & Grolemund, 2017)**.
+De este modo, se busca lograr una visión integral que permita comprender las complejidades de un mercado global que, a pesar de la digitalización, se mantiene firmemente anclado a sus raíces geográficas.
 
 \chapter{Planteamiento del Problema}
 
-En el contexto actual de una globalización digital acelerada, existe la percepción generalizada de que el acceso irrestricto a la información y el comercio electrónico han homogeneizado los patrones de consumo a nivel global.
-Bajo esta premisa, se esperaría que el éxito comercial de un título en la industria de los videojuegos dependiera exclusivamente de su calidad técnica o presupuesto de marketing.
-No obstante, la evidencia empírica sugiere que el desempeño de un producto no es uniforme, sino que está intrínsecamente ligado a la resonancia cultural y a las idiosincrasias de cada mercado regional **(Hosoi, 2019)**.
+En el contexto actual de una globalización digital acelerada, existe la percepción generalizada de que el acceso libre a la información y el comercio electrónico han igualado los patrones de consumo a nivel global.
+Sabiendo esto, se esperaría que el éxito comercial de un título en la industria de los videojuegos dependiera exclusivamente de su calidad técnica o presupuesto de marketing.
+Sin embargo, los datos analizados sugiere que el desempeño de un producto no es uniforme, sino que está directamente ligado a la resonancia cultural y a las caracteristicas de cada mercado regional **(Hosoi, 2019)**.
 
 El núcleo del problema radica en una asimetría informativa por parte de las empresas desarrolladoras y distribuidoras.
-A menudo, el lanzamiento de títulos se ejecuta bajo un modelo de "talla única", ignorando cómo los factores geográficos y sociodemográficos moldean las preferencias de juego.
-Esta falta de comprensión sobre la segmentación cultural no solo deriva en fracasos comerciales evitables, sino que evidencia un vacío en la investigación cuantitativa que valide si las fronteras culturales siguen siendo vigentes en la era de la hiperconectividad **(Vogel, 2020)**.
+A menudo, el lanzamiento de títulos se ejecuta bajo un modelo de "talla única", ignorando cómo los factores geográficos y culturales moldean las preferencias de juego.
+Esta falta de comprensión sobre la segmentación cultural no solo termina en fracasos comerciales evitables, sino que evidencia un vacío en la investigación cuantitativa que valide si las fronteras culturales siguen siendo vigentes en la era de la hiperconectividad **(Vogel, 2020)**.
 
-A pesar de la aparente integración digital, persiste la incertidumbre sobre si las preferencias de consumo han convergido realmente hacia un estándar global o si, por el contrario, las regiones mantienen perfiles de identidad irreductibles.
+A pesar de la integración digital, persiste el miedo sobre si las preferencias de consumo han convergido realmente hacia un estándar global o si, por el contrario, las regiones mantienen perfiles de identidad propios.
 Por lo tanto, esta investigación se propone cuantificar el peso del factor geográfico como determinante del éxito o fracaso de un género específico.
 
 Debido a esto, se plantea las siguientes preguntas de investigación:
@@ -89,8 +89,8 @@ Este estudio es fundamental para entender el comportamiento del consumidor desde
 A través del conocimiento obtenido sobre los géneros que podrían fallar y/o triunfar en ciertas regiones, las empresas pueden lograr una optimización de recursos, siendo este un tema central en la toma de decisiones bajo incertidumbre **(Vogel, 2020)**.
 Para un estudiante de la Escuela de Estadística y Ciencias Actuariales, trabajar con este volumen de datos permite aplicar técnicas de limpieza, validación y análisis exploratorio en R, fundamentales para garantizar la integridad de los modelos predictivos **(Wickham & Grolemund, 2017)**.
 
-Desde el punto de vista estratégico, esta investigación busca comprender por qué géneros específicos dominan mercados particulares, optimizando la toma de decisiones en la distribución y localización de software para evitar el riesgo de una estandarización ineficiente.
-En un entorno donde la "big data" conduce a normalizar el consumo, este estudio se propone demostrar, mediante evidencias estadísticas, que la identidad regional persiste como una variable significativa en los modelos actuales.
+Desde el punto de vista estratégico, esta investigación busca comprender por qué géneros específicos dominan mercados particulares, optimizando la toma de decisiones en la distribución y localización de software para evitar el riesgo de una generalizacion erronea.
+En un entorno donde la "big data" conduce a normalizar el consumo, este estudio se propone demostrar, mediante evidencias estadísticas, que la cultura persiste como una variable significativa en los modelos actuales.
 El fin último es analizar estadísticamente la relación entre la región geográfica y el éxito comercial, determinando si existen diferencias significativas en las preferencias culturales de consumo entre Japón, Norteamérica y Europa.
 
 \section{Objetivos}
@@ -105,39 +105,6 @@ El fin último es analizar estadísticamente la relación entre la región geogr
   \item{Medir el grado de asociación entre la región geográfica y la preferencia por géneros específicos, validando el impacto de la divergencia cultural.}
  \item{Estudiar la distribución de las plataformas de juego en cada región para entender cómo la preferencia por ciertas consolas condiciona el éxito de los géneros.} 
 \item{Analizar la correlación entre las plataformas de juego y la rentabilidad por región, identificando patrones de consumo asociados a sistemas específicos que actúan como catalizadores para el triunfo de ciertos géneros de videojuegos.} 
-  
-\end{itemize}
-\begin{table}[ht]
-\centering
-\caption{Variables consideradas en el estudio} 
-\resizebox{12cm}{!} {
-\begin{tabular}{cll}
-  \hline
-  \textbf{VARIABLE} & \textbf{DESCRIPCIÓN} \\ 
-  \hline
-  Name & Nombre comercial del videojuego \\ 
-  Platform & Plataforma de lanzamiento (e.g., Wii, PS4, X360) \\ 
-  Year & Año de lanzamiento del título \\ 
-  Genre & Categoría del juego (e.g., Sports, Action) \\ 
-  Publisher & Compañía editora responsable de la distribución \\ 
-  NA\_Sales & Ventas en Norteamérica (Millones de unidades) \\ 
-  EU\_Sales & Ventas en Europa (Millones de unidades) \\ 
-  JP\_Sales & Ventas en Japón (Millones de unidades) \\ 
-  Other\_Sales & Ventas en el resto del mundo \\ 
-  Global\_Sales & Suma total de ventas a nivel mundial \\ 
-   \hline
-\end{tabular}
-}
-\end{table}
-
-\section{Periodo de Referencia}
-
-El presente estudio delimita su marco temporal al periodo comprendido entre los años **1980 y 2020**, ambos inclusive. Esta delimitación no es arbitraria, sino que responde a criterios técnicos y estadísticos fundamentales para la robustez del análisis:
-
-\begin{itemize}
-    \item **Origen de los Datos (1980):** Marca el inicio de la recolección sistemática de registros comerciales en la industria del software de entretenimiento. Es el punto de partida donde la disponibilidad de datos permite una estructuración formal para el análisis masivo (\textit{Big Data}).
-    \item **Cierre del Ciclo (2020):** Se establece como límite para garantizar la consolidación de los datos. Dado el desfase temporal en la auditoría de ventas internacionales, el año 2020 permite trabajar con cifras validadas y finales para las regiones de Japón, Norteamérica y Europa, evitando sesgos por proyecciones incompletas de la novena generación de consolas.
-    \item **Relevancia estadística:** Un intervalo de 40 años proporciona una serie temporal de largo plazo (\textit{longitudinal study}), necesaria para identificar ciclos económicos, patrones de estacionalidad y cambios en el comportamiento del consumidor que no serían visibles en periodos más cortos.
 \end{itemize}
 
 \section{Variables}
@@ -147,22 +114,20 @@ library(knitr)
 library(kableExtra)
 
 variables_info <- data.frame(
-  Variable = c("Rank", "Name", "Platform", "Year", "Genre", 
-               "Publisher", "NA_Sales", "EU_Sales", "JP_Sales", "Global_Sales"),
+  Variable = c("Rank", "Name", "Platform", "Genre", "NA_Sales", 
+               "EU_Sales", "JP_Sales", "Global_Sales"),
   Definicion = c("Posición en el ranking de ventas globales", 
                  "Nombre del videojuego", 
                  "Consola o hardware de ejecución", 
-                 "Año de lanzamiento al mercado", 
                  "Categoría o temática del juego", 
-                 "Empresa editora/distribuidora", 
                  "Ventas en Norteamérica (Millones)", 
                  "Ventas en Europa (Millones)", 
                  "Ventas en Japón (Millones)", 
                  "Ventas totales acumuladas (Millones)"),
-  Tipo_de_Dato = c("Numérico", "Carácter", "Factor", "Numérico", "Factor", 
-                   "Factor", "Numérico", "Numérico", "Numérico", "Numérico"),
-  Escala_Estadistica = c("Ordinal", "Nominal", "Nominal", "Discreta", "Nominal", 
-                         "Nominal", "Continua", "Continua", "Continua", "Continua")
+  Tipo_de_Dato = c("Numérico", "Carácter", "Factor", "Factor", 
+                   "Numérico", "Numérico", "Numérico", "Numérico"),
+  Escala_Estadistica = c("Ordinal", "Nominal", "Nominal", "Nominal", 
+                         "Continua", "Continua", "Continua", "Continua")
 )
 
 kable(variables_info, format = "latex", booktabs = TRUE, 
