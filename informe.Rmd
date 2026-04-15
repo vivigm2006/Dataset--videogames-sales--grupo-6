@@ -132,11 +132,44 @@ El fin último es analizar estadísticamente la relación entre la región geogr
 
 \section{Periodo de Referencia}
 
-Describir la fuente y el Periodo de Referencia utilizado en el trabajo de investigación
+El presente estudio delimita su marco temporal al periodo comprendido entre los años **1980 y 2020**, ambos inclusive. Esta delimitación no es arbitraria, sino que responde a criterios técnicos y estadísticos fundamentales para la robustez del análisis:
+
+\begin{itemize}
+    \item **Origen de los Datos (1980):** Marca el inicio de la recolección sistemática de registros comerciales en la industria del software de entretenimiento. Es el punto de partida donde la disponibilidad de datos permite una estructuración formal para el análisis masivo (\textit{Big Data}).
+    \item **Cierre del Ciclo (2020):** Se establece como límite para garantizar la consolidación de los datos. Dado el desfase temporal en la auditoría de ventas internacionales, el año 2020 permite trabajar con cifras validadas y finales para las regiones de Japón, Norteamérica y Europa, evitando sesgos por proyecciones incompletas de la novena generación de consolas.
+    \item **Relevancia estadística:** Un intervalo de 40 años proporciona una serie temporal de largo plazo (\textit{longitudinal study}), necesaria para identificar ciclos económicos, patrones de estacionalidad y cambios en el comportamiento del consumidor que no serían visibles en periodos más cortos.
+\end{itemize}
 
 \section{Variables}
 
-Describir la variable en estudio en el trabajo de investigación
+```{r Tabla_Variables, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+variables_info <- data.frame(
+  Variable = c("Rank", "Name", "Platform", "Year", "Genre", 
+               "Publisher", "NA_Sales", "EU_Sales", "JP_Sales", "Global_Sales"),
+  Definicion = c("Posición en el ranking de ventas globales", 
+                 "Nombre del videojuego", 
+                 "Consola o hardware de ejecución", 
+                 "Año de lanzamiento al mercado", 
+                 "Categoría o temática del juego", 
+                 "Empresa editora/distribuidora", 
+                 "Ventas en Norteamérica (Millones)", 
+                 "Ventas en Europa (Millones)", 
+                 "Ventas en Japón (Millones)", 
+                 "Ventas totales acumuladas (Millones)"),
+  Tipo_de_Dato = c("Numérico", "Carácter", "Factor", "Numérico", "Factor", 
+                   "Factor", "Numérico", "Numérico", "Numérico", "Numérico"),
+  Escala_Estadistica = c("Ordinal", "Nominal", "Nominal", "Discreta", "Nominal", 
+                         "Nominal", "Continua", "Continua", "Continua", "Continua")
+)
+
+kable(variables_info, format = "latex", booktabs = TRUE, 
+      caption = "Definición y Clasificación Estadística de las Variables") %>%
+  kable_styling(latex_options = c("scale_down", "hold_position", "striped")) %>%
+  column_spec(2, width = "15em")
+```
 
 \chapter{Marco Teórico}
 
